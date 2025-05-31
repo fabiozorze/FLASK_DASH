@@ -1,0 +1,141 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100%;
+    background: #f9f9f9;
+}
+
+.auth-container {
+    display: flex;
+    height: 100vh;
+}
+
+.auth-left {
+    background: #2e004f;
+    color: white;
+    flex: 0.8;;
+    padding: 40px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center horizontally */
+    text-align: center;
+}
+
+
+.auth-left h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px; /* Tighter space under logo */
+}
+
+.auth-left .green {
+    color: #00c46f; /* Brand green */
+}
+
+.auth-left p {
+    font-size: 1rem;
+    color: #cccccc;
+    margin-top: 0; /* Remove top margin */
+}
+
+.auth-right {
+    flex: 1.2;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+.auth-right h2 {
+    color: #2e004f;
+    margin-bottom: 8px;
+    font-size: 1.5rem;             /* Slightly smaller */
+    text-align: center;
+}
+
+.auth-right p {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.auth-right form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 280px;
+    width: 100%;
+    font-size: 0.9rem;
+    align-self: center; /* center the form inside .auth-right */
+    text-align: left;   /* keeps labels aligned left */
+}
+
+
+input[type=email],
+input[type=password],
+input[type=text] {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border 0.3s ease;
+}
+
+input:focus {
+    border-color: #2e004f;
+    outline: none;
+}
+
+button {
+    background: #3e006d; /* Matches the actual panel color more closely */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: #2e004f; /* Slightly deeper on hover */
+}
+
+.btn-secondary {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px;
+    color: #2e004f;
+    border: 1px solid #2e004f;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: #f3eaff;
+}
+
+small {
+    font-size: 0.85em;
+    color: #555;
+}
+
+a {
+    font-size: 0.9em;
+    color: #2e004f;
+    text-decoration: underline;
+}
+
+
+.center-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}

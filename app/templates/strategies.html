@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/strategies.css') }}">
+{% endblock %}
+{% block content %}
+<h2 class="page-title">Explore Strategies</h2>
+
+<div class="strategy-wrapper">
+  <div class="strategy-grid">
+
+    <!-- Strategy Card 1 -->
+    <div class="strategy-card">
+        <h3>Long Term HODL</h3>
+        <div class="strategy-assets">
+            <span>🟠 <strong>80%</strong></span>
+            <span>🔵 <strong>20%</strong></span>
+        </div>
+        <div class="progress-bar">
+            <div class="bar orange" style="width: 80%"></div>
+            <div class="bar blue" style="width: 20%"></div>
+        </div>
+        <div class="card-info">
+            <div class="info-box">
+                <div>Return</div>
+                <div class="positive">↑ 405.44%</div>
+            </div>
+            <div class="info-box">
+                <div>Period</div>
+                <div><strong>Last 2 years</strong></div>
+            </div>
+        </div>
+        <p>Aim for stability and long-term growth by focusing on Bitcoin and Ethereum.</p>
+        <div class="card-actions">
+        <a href="{{ url_for('main.strategy_details', strategy_id='hodl') }}" class="create-btn">Create</a>
+        <a href="{{ url_for('main.strategy_details', strategy_id='hodl') }}" class="detail-btn">Detalhe</a>
+        </div>
+    </div>
+
+    <!-- Add more .strategy-card blocks here -->
+      <!-- Strategy Card 2 -->
+    <div class="strategy-card">
+        <h3>Long Term HODL</h3>
+        <div class="strategy-assets">
+            <span>🟠 <strong>80%</strong></span>
+            <span>🔵 <strong>20%</strong></span>
+        </div>
+        <div class="progress-bar">
+            <div class="bar orange" style="width: 80%"></div>
+            <div class="bar blue" style="width: 20%"></div>
+        </div>
+        <div class="card-info">
+            <div class="info-box">
+                <div>Return</div>
+                <div class="positive">↑ 405.44%</div>
+            </div>
+            <div class="info-box">
+                <div>Period</div>
+                <div><strong>Last 2 years</strong></div>
+            </div>
+        </div>
+        <p>Aim for stability and long-term growth by focusing on Bitcoin and Ethereum.</p>
+        <div class="card-actions">
+        <a href="{{ url_for('main.strategy_details', strategy_id='hodl') }}" class="create-btn">Create</a>
+        <a href="{{ url_for('main.strategy_details', strategy_id='hodl') }}" class="detail-btn">Detalhe</a>
+        </div>
+    </div>
+
+      <!-- Strategy Card 3 -->
+    <div class="strategy-card">
+        <h3>Long Term HODL</h3>
+        <div class="strategy-assets">
+            <span>🟠 <strong>80%</strong></span>
+            <span>🔵 <strong>20%</strong></span>
+        </div>
+        <div class="progress-bar">
+            <div class="bar orange" style="width: 80%"></div>
+            <div class="bar blue" style="width: 20%"></div>
+        </div>
+        <div class="card-info">
+            <div class="info-box">
+                <div>Return</div>
+                <div class="positive">↑ 405.44%</div>
+            </div>
+            <div class="info-box">
+                <div>Period</div>
+                <div><strong>Last 2 years</strong></div>
+            </div>
+        </div>
+        <p>Aim for stability and long-term growth by focusing on Bitcoin and Ethereum.</p>
+        <div class="card-actions">
+        <a href="{{ url_for('main.strategy_details', strategy_id='hodl') }}" class="create-btn">Create</a>
+        <a href="{{ url_for('main.strategy_details', strategy_id='hodl') }}" class="detail-btn">Detalhe</a>
+        </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

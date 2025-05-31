@@ -1,0 +1,78 @@
+.strategy-details-wrapper {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.left-panel, .right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.left-panel {
+    flex: 1;
+}
+
+.right-panel {
+    flex: 2;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.tab-selector {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.active-tab {
+    color: #00c46f;
+    border-bottom: 2px solid #00c46f;
+}
+
+.circle-total {
+    text-align: center;
+    font-size: 1.4rem;
+    margin: 20px 0;
+}
+
+.stocks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.stock-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 4px;
+}
+
+.badge-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.badge {
+    padding: 6px 12px;
+    background: #eee;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.badge.red {
+    background: #ffe6e6;
+    color: #c62828;
+}

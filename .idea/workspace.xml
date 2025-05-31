@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="39abbabf-7a6a-490e-8b53-dd01d31db80d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/FLASK_DASH.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/auth_routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/css/auth.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/css/details.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/css/strategies.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/icons/strategy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/auth/base_auth.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/auth/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/auth/qrcode.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/auth/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/auth/verify_2fa.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/portfolio.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/strategies.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/strategy_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dynamodb/table_create.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2wBWxGutL7qaxyyEz7E2PDkb3DA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Fabio/PycharmProjects/FLASK_DASH"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Fabio\PycharmProjects\FLASK_DASH\app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Fabio\PycharmProjects\FLASK_DASH\app\templates\auth" />
+      <recent name="C:\Users\Fabio\PycharmProjects\FLASK_DASH\app\static\icons" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-5b207ade9991-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.17890.14" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="39abbabf-7a6a-490e-8b53-dd01d31db80d" name="Changes" comment="" />
+      <created>1745515691503</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745515691503</updated>
+    </task>
+    <servers />
+  </component>
+</project>

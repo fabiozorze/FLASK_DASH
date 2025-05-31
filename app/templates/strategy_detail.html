@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/details.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="strategy-details-wrapper">
+    <!-- LEFT SIDE: Donut Chart + Info -->
+    <div class="left-panel">
+        <div class="card">
+            <div class="tab-selector">
+                <span class="active-tab">ANTERIOR</span>
+                <span>ATUAL</span>
+            </div>
+            <div class="circle-total">Total: <strong>100%</strong></div>
+            <div class="donut-placeholder" style="height: 200px; background-color: #f0f0f0; border-radius: 100%; text-align: center; line-height: 200px;">
+                [ Gráfico Donut ]
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="stocks-list">
+                <div class="stock-item">
+                    <span><strong>BMEB4</strong></span>
+                    <span>3%</span>
+                </div>
+                <div class="stock-item">
+                    <span><strong>FLRY3</strong></span>
+                    <span>15%</span>
+                </div>
+                <div class="stock-item">
+                    <span><strong>GGPS3</strong></span>
+                    <span>9%</span>
+                </div>
+                <div class="stock-item">
+                    <span><strong>MDIA3</strong></span>
+                    <span>8%</span>
+                </div>
+                <!-- Add more stocks as needed -->
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE: Info + Methodology + Chart -->
+    <div class="right-panel">
+        <div class="card">
+            <h4>Sobre a carteira</h4>
+            <div class="badge-container">
+                <span class="badge red">Risco Alto</span>
+                <span class="badge">Frequência Trimestral</span>
+                <span class="badge">Mínimo de R$ 1000</span>
+                <span class="badge">10 ativos</span>
+                <span class="badge">Benchmark SMLL</span>
+            </div>
+            <p>A carteira <strong>{{ strategy_id }}</strong> é uma carteira de empresas de pequeno porte que busca obter retorno superior ao índice SMLL da B3.</p>
+        </div>
+
+        <div class="card">
+            <h4>Metodologia</h4>
+            <p>100% quantitativa, baseada em um algoritmo proprietário que faz a seleção das ações e define a composição otimizada da carteira.</p>
+        </div>
+
+        <div class="card">
+            <h4>Desempenho</h4>
+            <div style="height: 200px; background-color: #f3f3f3; border-radius: 8px; text-align: center; line-height: 200px;">
+                [ Gráfico de desempenho aqui ]
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

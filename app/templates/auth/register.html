@@ -1,0 +1,22 @@
+{% extends "auth/base_auth.html" %}
+{% block title %}Criar conta{% endblock %}
+{% block form %}
+<h2>Crie sua conta</h2>
+<p>Abrir a sua conta na Invest.IA é 100% gratuito e não demora nem 1 minuto.</p>
+<form method="POST">
+    <input type="text" name="name" placeholder="Nome completo" required>
+    <input type="text" name="cpf" placeholder="CPF" required>
+    <input type="email" name="email" placeholder="E-mail" required>
+    <input type="password" name="password" placeholder="Senha" required>
+
+    <small>Seis caracteres / Número / Letra minúscula / Letra maiúscula</small>
+
+    <label><input type="checkbox" required> Li e aceito os <a href="#">Termos de Uso</a></label>
+    <label><input type="checkbox" required> Li e aceito a <a href="#">Política de Privacidade</a></label>
+
+    <button type="submit">Criar conta</button>
+</form>
+<div class="center-text">
+  <a href="{{ url_for('auth.login') }}">Já tem conta? Acesse aqui</a>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+<body>
+<div class="auth-container">
+    <div class="auth-left">
+        <h1><span class="white">Invest</span><span class="green">.IA</span></h1>
+        <p>O investimento realmente inteligente</p>
+    </div>
+    <div class="auth-right">
+        {% block form %}{% endblock %}
+    </div>
+</div>
+</body>
+</html>
