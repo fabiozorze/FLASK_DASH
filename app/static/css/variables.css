@@ -1,0 +1,65 @@
+:root {
+    /* FONT FAMILY */
+    --font-main: 'Inter', sans-serif;
+    --font-title: 'Poppins', sans-serif;          /* for big titles like "Invest.IA" */
+    --font-slogan: 'JetBrains Mono', monospace;   /* for slogans or coding style */
+
+    /* FONT SIZES */
+    --font-size-xl: 2.5rem;
+    /* Example: Big title like Invest.IA */
+    --font-size-lg: 1.5rem;
+    /* Section titles like "Faça seu login" */
+    --font-size-md: 1rem;
+    /* Paragraphs or input labels */
+    --font-size-sm: 0.9rem;
+    /* Small text like terms or footnotes */
+    --font-size-xs: 0.8rem;
+    /* Very small labels */
+
+    /* FONT WEIGHTS */
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* LINE HEIGHTS */
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.5;
+
+    /* LETTER SPACING (optional) */
+    --letter-spacing-normal: 0;
+    --letter-spacing-wide: 0.05em;
+
+    /* BRAND COLORS */
+    --color-purple-dark: #2e004f;
+    /* Sidebar / Main Color */
+    --color-purple: #3e006d;
+    /* Button default */
+    --color-purple-light: #f3eaff;
+    /* Button hover background */
+    --color-green: #00c46f;
+    /* Brand highlight */
+    --color-green-light: #e5f7ef;
+
+    /* TEXT COLORS */
+    --text-dark: #333333;
+    --text-light: #ffffff;
+
+    /* BACKGROUND COLORS */
+    --bg-light: #f9f9f9;
+    --bg-white: #ffffff;
+    --bg-gray: #f3f4f6;
+
+    /* BORDERS AND LINES */
+    --border-gray: #ccc;
+    --border-light: #eee;
+
+    /* BADGE COLORS */
+    --badge-red-bg: #ffe6e6;
+    --badge-red-text: #c62828;
+
+    /* OTHER */
+    --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --radius: 12px;
+}

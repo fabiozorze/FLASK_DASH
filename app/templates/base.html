@@ -1,70 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Flask Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block head %}{% endblock %}
 </head>
+
 <body>
 
-<div class="sidebar" id="sidebar">
-    <div class="toggle-btn" onclick="toggleSidebar()">&#9776;</div>
-    <div class="nav-icons">
-        <a href="{{ url_for('main.home') }}" class="nav-link">
-            <img src="{{ url_for('static', filename='icons/strategy_white.png') }}" alt="Strategy">
-            <span class="link-text">Strategy</span>
-        </a>
-        <a href="{{ url_for('main.portfolio') }}" class="nav-link">
-            <img src="{{ url_for('static', filename='icons/portfolio_white.png') }}" alt="Portfolio">
-            <span class="link-text">Portfolio</span>
-        </a>
-    </div>
-</div>
-
-<div class="main-content" id="main-content">
-    <div class="header">
-        <span>{{ session.get('name', session.get('email')) }}</span>
-        <div class="user-menu-wrapper">
-            <div class="avatar-toggle" onclick="toggleDropdown()">
-                <img src="{{ url_for('static', filename='avatar.png') }}" class="avatar-icon">
-            </div>
-            <div class="dropdown-menu" id="dropdownMenu">
-                <a href="#">👤 Profile</a>
-                <a href="#">🛡️ Security</a>
-                <a href="#">🔄 Exchanges</a>
-                <a href="#">💳 Billing</a>
-                <hr>
-                <a href="{{ url_for('auth.logout') }}">⏻ Logout</a>
-            </div>
+    <div class="sidebar" id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">&#9776;</div>
+        <div class="nav-icons">
+            <a href="{{ url_for('main.home') }}" class="nav-link">
+                <img src="{{ url_for('static', filename='icons/strategy_white.png') }}" alt="Strategy">
+                <span class="link-text">Strategy</span>
+            </a>
+            <a href="{{ url_for('main.portfolio') }}" class="nav-link">
+                <img src="{{ url_for('static', filename='icons/portfolio_white.png') }}" alt="Portfolio">
+                <span class="link-text">Portfolio</span>
+            </a>
         </div>
     </div>
 
-    <div class="content">
-        {% block content %}{% endblock %}
+    <div class="main-content" id="main-content">
+        <div class="header">
+            <span>{{ session.get('name', session.get('email')) }}</span>
+            <div class="user-menu-wrapper">
+                <div class="avatar-toggle" onclick="toggleDropdown()">
+                    <img src="{{ url_for('static', filename='avatar.png') }}" class="avatar-icon">
+                </div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#">👤 Profile</a>
+                    <a href="#">🛡️ Security</a>
+                    <a href="#">🔄 Exchanges</a>
+                    <a href="#">💳 Billing</a>
+                    <hr>
+                    <a href="{{ url_for('auth.logout') }}">⏻ Logout</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
     </div>
-</div>
 
 
-<script>
-function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('collapsed');
-    document.getElementById('main-content').classList.toggle('expanded');
-}
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+            document.getElementById('main-content').classList.toggle('expanded');
+        }
 
-function toggleDropdown() {
-    const menu = document.getElementById('dropdownMenu');
-    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-}
+        function toggleDropdown() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
 
-window.addEventListener('click', function(e) {
-    const avatar = document.querySelector('.avatar-toggle');
-    const menu = document.getElementById('dropdownMenu');
-    if (!avatar.contains(e.target) && !menu.contains(e.target)) {
-        menu.style.display = 'none';
-    }
-});
-</script>
+        window.addEventListener('click', function (e) {
+            const avatar = document.querySelector('.avatar-toggle');
+            const menu = document.getElementById('dropdownMenu');
+            if (!avatar.contains(e.target) && !menu.contains(e.target)) {
+                menu.style.display = 'none';
+            }
+        });
+    </script>
 
 </body>
+
 </html>
