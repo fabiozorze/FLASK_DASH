@@ -1,16 +1,28 @@
 {% extends "auth/base_auth.html" %}
 {% block title %}Login{% endblock %}
 {% block form %}
-<h2>Faça seu login</h2>
-<p>Caso você já tenha conta na Invest.IA, utilize o mesmo login e senha.</p>
+<div class="container-title-login">
+    <h2>FACA SEU LOGIN</h2>
+    <p>Caso você já tenha conta na Invest.IA, utilize o mesmo login e senha.</p>
+</div>
+
 <form method="POST">
-    <label>Email ou CPF</label>
-    <input type="email" name="email" placeholder="fabio@email.com" required>
 
-    <label>Senha</label>
-    <input type="password" name="password" required>
+    <div class="input-container">
+        <label id="lb-email" for="email">Email ou CPF</label>
+            <i class="ph ph-envelope"></i>
+            <input type="email" name="email" placeholder="fabio@email.com" required>
+    </div>
 
-    <a href="#">esqueceu a senha?</a>
+    <div class="input-container">
+        <label id="lb-password" for="password">Senha</label>
+    
+            <i class="ph ph-lock"></i>
+            <input type="password" name="password" required>
+
+            <a href="#">esqueceu a senha?</a>
+    </div>
+    
     <button type="submit">Entrar</button>
 </form>
 <p>Ainda não possui uma conta?</p>

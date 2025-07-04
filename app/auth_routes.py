@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, redirect, url_for
+from flask import Blueprint, render_template, request, session, redirect, url_for, jsonify
 import boto3
 import pyotp
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -81,9 +81,27 @@ def logout():
     session.clear()
     return redirect(url_for('auth.login'))
 
+# API routes created for frontend
+@auth.route('/api/test')
+def api_test():
+    return jsonify({'message': 'API test route working!'})
+
+@auth.route('/api/login', methods=['POST'])
+def api_login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+    response = users_table.get_item(Key={'email': email})
+    user = response.get('Item')
+    if not user or not check_password_hash(user['password_hash'], password):
+        return jsonify({'success': False, 'error': 'Invalid credentials'}), 403
+    # You can add session logic or JWT here if needed
+    return jsonify({'success': True, 'message': 'Login successful', 'name': user.get('name')})
+
 def get_user():
     email = session.get('email')
     if not email:
         return None
     response = users_table.get_item(Key={'email': email})
     return response.get('Item')
+#--------------------------------

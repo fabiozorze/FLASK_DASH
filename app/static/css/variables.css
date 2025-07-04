@@ -5,6 +5,7 @@
     --font-slogan: 'JetBrains Mono', monospace;   /* for slogans or coding style */
 
     /* FONT SIZES */
+    --font-size-xxl: 3rem;
     --font-size-xl: 2.5rem;
     /* Example: Big title like Invest.IA */
     --font-size-lg: 1.5rem;
@@ -32,6 +33,7 @@
     --letter-spacing-wide: 0.05em;
 
     /* BRAND COLORS */
+    --color-white: #ffffff;
     --color-purple-dark: #2e004f;
     /* Sidebar / Main Color */
     --color-purple: #3e006d;

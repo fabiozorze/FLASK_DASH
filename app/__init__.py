@@ -2,9 +2,11 @@ from flask import Flask
 from datetime import timedelta
 from .routes import main
 from .auth_routes import auth
+from flask_cors import CORS
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
     app.secret_key = 'secret-key'
 
     # 🔐 Session config to force logout on browser close

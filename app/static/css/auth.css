@@ -1,3 +1,5 @@
+@import url('./variables.css');
+
 body, html {
     margin: 0;
     padding: 0;
@@ -9,11 +11,15 @@ body, html {
 body{
     background-image: url(../assets/background_img.png);
     background-size: cover;
+    
 }
 
 .auth-container {
-    display: flex;
     height: 100vh;
+
+    display: flex;
+    align-items: center;
+
 }
 
 .auth-left {
@@ -32,70 +38,140 @@ body{
 
 .auth-left h1 {
     font-family: var(--font-title);
-    font-size: 2.5em;
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-bold);
     margin-bottom: 5px; /* Tighter space under logo */
 }
 
 .auth-left .green {
     font-family: var(--font-title);
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-bold);
     color: #00c46f; /* Brand green */
 }
 
 .auth-left p {
     font-family: var(--font-slogan);
-    font-size: 1rem;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-light);
     color: #cccccc;
     margin-top: 0; /* Remove top margin */
 }
 
 .auth-right {
-    width: 37.6rem;
-    height: auto;
+    width: min(90vw, 37.6rem);
+    height: min(90vh, 42rem);
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: var(--color-purple-dark);
+    gap: 3rem;
+
+    background-color: rgba(46, 0, 79, 0.3);
+
+    box-shadow: 4px 4px 8px 1px rgba(106, 90, 205, 0.2); /
+
+    border-radius: 8px;
+}
+
+.container-title-login{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .auth-right h2 {
-    color: #2e004f;
     margin-bottom: 8px;
-    font-size: 1.5rem;             /* Slightly smaller */
+
+    font-family: var(--font-title);
+    color: var(--color-white);
+    font-size: var(--font-size-xl);  
+    font-weight: var(--font-weight-bold);           /* Slightly smaller */
     text-align: center;
 }
 
 .auth-right p {
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
+    color: var(--color-white);
+    font-weight: var(--font-weight-regular);
+
     text-align: center;
     margin-bottom: 16px;
-    color: #333;
 }
 
 .auth-right form {
+    width: 100%;
+
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
-    max-width: 280px;
-    width: 100%;
+
     font-size: 0.9rem;
     align-self: center; /* center the form inside .auth-right */
     text-align: left;   /* keeps labels aligned left */
 }
 
+.input-container{
+
+    width: 29rem;
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 1rem;
+
+    position: relative;
+
+}
+
+.input-container i{
+    font-size: 1.2rem;
+    color: var(--color-white);
+
+    position: absolute;
+    top: 46%;
+    left: 18px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Prevents icon from blocking input clicks */
+}
 
 input[type=email],
 input[type=password],
 input[type=text] {
-    padding: 10px;
+
+    padding: 10px 35px;
     font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+
     transition: border 0.3s ease;
 }
 
+
+input[type=email],
+input[type=password]{
+    margin-bottom: 3rem;
+}
+
+#lb-email,
+#lb-password {
+    font-family: var(--font-title);
+    color: var(--color-white);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+
+    padding-bottom: .8rem;
+}
+
 input:focus {
-    border-color: #2e004f;
+    border-color: var(--color-green);
     outline: none;
 }
 
@@ -135,9 +211,9 @@ small {
     color: #555;
 }
 
-a {
+form a {
     font-size: 0.9em;
-    color: #2e004f;
+    color: var(--color-white);
     text-decoration: underline;
 }
 
