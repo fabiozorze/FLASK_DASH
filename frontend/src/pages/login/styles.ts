@@ -1,16 +1,16 @@
 import styled from "styled-components";
+import LoginBG from "../../assets/img/login_background.png"
 
 export const Container = styled.div`
-    width: 100%;
+    width: 100vw;
     height: 100vh;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+    background: 
+    url(${LoginBG}) no-repeat center center/cover;
+
+
 `;
