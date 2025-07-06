@@ -87,3 +87,16 @@ def get_user():
         return None
     response = users_table.get_item(Key={'email': email})
     return response.get('Item')
+
+
+
+import boto3
+import botocore
+
+session = boto3.Session()
+credentials = session.get_credentials().get_frozen_credentials()
+
+print("Access Key:", credentials.access_key)
+print("Secret Key:", credentials.secret_key)
+
+print("Region:", session.region_name)

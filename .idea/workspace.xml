@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="39abbabf-7a6a-490e-8b53-dd01d31db80d" name="Changes" comment="last">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth_routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,18 +24,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "fabiozorze"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;fabiozorze&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/fabiozorze/FLASK_DASH.git",
-    "accountId": "31e48d8b-6aaa-4cd1-a31c-a645470edd50"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/fabiozorze/FLASK_DASH.git&quot;,
+    &quot;accountId&quot;: &quot;31e48d8b-6aaa-4cd1-a31c-a645470edd50&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -50,7 +51,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Fabio/PycharmProjects/factor_invest2"
+    "last_opened_file_path": "C:/Users/Fabio/PycharmProjects/FLASK_DASH"
   }
 }]]></component>
   <component name="RecentsManager">
