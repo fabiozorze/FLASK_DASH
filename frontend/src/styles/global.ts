@@ -20,4 +20,10 @@ body, input, textarea, button{
     font-size: ${props=>props.theme.fontSizes.md};
 }
 
+input{
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
 `;

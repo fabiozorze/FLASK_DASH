@@ -12,5 +12,7 @@ export const Container = styled.div`
     background: 
     url(${LoginBG}) no-repeat center center/cover;
 
+    padding: 0 7rem;
+
 
 `;
