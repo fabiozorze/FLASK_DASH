@@ -1,4 +1,3 @@
-import { Typewriter } from "react-simple-typewriter"
 import { ButtonForm, ContainerForm } from "./styles"
 import { EnvelopeSimpleIcon, LockIcon } from "@phosphor-icons/react"
 

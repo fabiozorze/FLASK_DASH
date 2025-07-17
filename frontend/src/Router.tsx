@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
-import { Login } from "./pages/login"
-import { Home } from "./pages/home"
-import { Authentication } from "./pages/login/TwoFactorAuth"
+import { Login } from "./pages/Login"
+import { Home } from "./pages/Home"
+import { Authentication } from "./pages/Login/TwoFactorAuth"
 
 export function Router() {
     return (
