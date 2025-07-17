@@ -26,7 +26,9 @@ export function FormLogin() {
                 </div>
 
                 <ButtonForm>ENTRAR</ButtonForm>
-                <a>Ainda não possui uma conta?</a>
+                <a onClick={()=>{
+                    console.log("Ok I am here")
+                }}>Ainda não possui uma conta?</a>
             </form>
         </ContainerForm>
     )
