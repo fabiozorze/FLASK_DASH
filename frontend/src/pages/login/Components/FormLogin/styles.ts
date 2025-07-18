@@ -76,8 +76,7 @@ input{
 
     transition: border 0.3s ease;
 
-    margin-bottom: 3rem;
-
+    color: ${props=> props.theme.colors["white"]};
     caret-color: ${props=> props.theme.colors["green"]}; // Change input cursor color
 }
 
@@ -85,8 +84,9 @@ form > div:nth-child(2)>input{
     margin-bottom: .3rem;
 }
 
+
 form > div:nth-child(2){
-    margin-bottom: 3rem;
+    margin: 3rem 0;
 }
 
 a{
