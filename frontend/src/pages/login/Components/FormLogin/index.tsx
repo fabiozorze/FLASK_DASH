@@ -25,7 +25,7 @@ export function FormLogin() {
         const { email, password } = data;
 
         try {
-            const response = await api.post("auth/login", {
+            const response = await api.post("/auth/login", {
                 email,
                 password
             });
