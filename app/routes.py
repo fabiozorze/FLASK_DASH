@@ -36,3 +36,11 @@ def serve_react(path):
         return response.content, response.status_code, dict(response.headers)
     except requests.exceptions.ConnectionError:
         return "React dev server not running. Please start it with 'npm run dev' in the frontend directory.", 503
+    
+    
+ #Temporary ROUTE must be deleted after home page in react be created
+@main.route('/flask-preview')
+def flask_preview():
+    if not session.get('authenticated'):
+        return redirect(url_for('auth.login'))
+    return render_template('strategies.html')  # 🧠 This uses base.html under the hood
