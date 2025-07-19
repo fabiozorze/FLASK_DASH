@@ -35,6 +35,8 @@ form div input{
 
     text-align: center;
     font-size: ${props=>props.theme.fontSizes["md"]};
+    color: black; /* ✅ ADD THIS */
+    border: 2px solid red;
 
 }
 form div input::placeholder{

@@ -8,6 +8,13 @@ auth = Blueprint('auth', __name__)
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 users_table = dynamodb.Table('users')
 
+def get_user():
+    email = session.get('email')
+    if not email:
+        return None
+    response = users_table.get_item(Key={'email': email})
+    return response.get('Item')
+
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -42,8 +49,11 @@ def setup_2fa():
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
+        data = request.get_json()
+        email = data.get('email')
+        password = data.get('password')
+        # email = request.form['email']
+        # password = request.form['password']
         response = users_table.get_item(Key={'email': email})
         user = response.get('Item')
         if not user or not check_password_hash(user['password_hash'], password):
@@ -61,14 +71,18 @@ def verify_2fa():
         return redirect(url_for('auth.login'))
 
     if request.method == 'POST':
-        code = request.form['code']
+        # code = request.form['code']
+        data = request.get_json()
+        code = data.get('code')
         totp = pyotp.TOTP(user['totp_secret'])
         if totp.verify(code):
             session.permanent = False
             session['authenticated'] = True
             session.modified = True
             session['name'] = user.get('name')
-            return redirect(url_for('main.home'))
+            # return redirect(url_for('main.home'))
+            print("✅ 2FA verified. Session now:", dict(session))
+            return jsonify({"message": "2FA verified"}), 200
         print("✅ 2FA passed. Session now:", dict(session))
         return "Invalid 2FA code", 403
 
