@@ -50,13 +50,16 @@ def setup_2fa():
 def login():
     if request.method == 'POST':
         data = request.get_json()
+        print("Received data:", data)
         email = data.get('email')
         password = data.get('password')
         # email = request.form['email']
         # password = request.form['password']
         response = users_table.get_item(Key={'email': email})
+        print("DynamoDB response:", response)
         user = response.get('Item')
         if not user or not check_password_hash(user['password_hash'], password):
+            print("Invalid credentials for:", email)
             return "Invalid credentials", 403
         session.permanent = False
         session['email'] = email
