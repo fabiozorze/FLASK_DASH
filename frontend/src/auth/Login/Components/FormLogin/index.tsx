@@ -4,9 +4,10 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { api } from "../../../../lib/axios"
+import { useNavigate } from "react-router-dom";
 
 
-const createUserFormSchema = z.object({
+const signInUserFormSchema = z.object({
     email: z.string()
         .nonempty("Email é obrigatório"),
 
@@ -17,11 +18,13 @@ const createUserFormSchema = z.object({
 
 export function FormLogin() {
 
+     const navigate = useNavigate() 
+
     const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: zodResolver(createUserFormSchema),
+        resolver: zodResolver(signInUserFormSchema),
     });
 
-    async function handleLogin(data: z.infer<typeof createUserFormSchema>) {
+    async function handleLogin(data: z.infer<typeof signInUserFormSchema>) {
         const { email, password } = data;
 
         try {
@@ -31,7 +34,8 @@ export function FormLogin() {
             });
             // ✅ If login is successful, redirect or go to 2FA
             console.log("Login successful", response.data);
-            window.location.href = "/TwoFactorAuth";// example - adjust to your route
+            navigate("/TwoFactorAuth", {replace: true})
+            // window.location.href = "/TwoFactorAuth";// example - adjust to your route
 
         } catch (error: any) {
             if (error.response && error.response.status === 403) {
@@ -40,6 +44,15 @@ export function FormLogin() {
                 alert("Erro ao tentar fazer login");
                 console.error(error);
             }
+        }
+    }
+
+    async function handleRegister() {
+        try {
+            navigate("/SignUp")
+            //window.open("http://localhost:5001/auth/register.html", "_self");
+        } catch (error) {
+            alert("❌ Código inválido");
         }
     }
 
@@ -72,10 +85,13 @@ export function FormLogin() {
                     <a>esqueceu a senha?</a>
                 </div>
 
-                <ButtonForm>ENTRAR</ButtonForm>
-                <a onClick={() => {
-                    console.log("Ok I am here")
-                }}>Ainda não possui uma conta?</a>
+                <ButtonForm type="submit">ENTRAR</ButtonForm>
+                <a href="#" onClick={e => {
+                        e.preventDefault()   // prevent the href="#" from jumping
+                        handleRegister()     // call your function when clicked
+                    }}>
+                    Ainda não possui uma conta?
+                </a>
             </form>
         </ContainerForm>
     )

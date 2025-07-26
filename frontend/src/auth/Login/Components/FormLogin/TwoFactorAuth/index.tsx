@@ -1,10 +1,10 @@
 import { AuthImage, ContainerAuth } from "./styles";
 import { KeyIcon } from "@phosphor-icons/react"
-import { api } from "../../../lib/axios"
+import { api } from "../../../../../lib/axios"
 import { useForm, useFieldArray } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 
 
@@ -88,8 +88,8 @@ export function Authentication() {
                                 inputMode="numeric"
                                 name={name}
                                 onChange={e => {
-                                    registerOnChange(e);                    // fire RHF’s onChange
-                                    handleChangeFocus(idx, e.target.value);      // your focus logic
+                                    registerOnChange(e);// fire RHF’s onChange
+                                    handleChangeFocus(idx, e.target.value); //focus logic
                                 }}
                                 ref={el => {
                                     registerRef(el);                        // attach RHF’s ref

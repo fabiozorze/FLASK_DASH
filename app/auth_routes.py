@@ -18,9 +18,14 @@ def get_user():
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        password = request.form['password']
+        data = request.get_json()
+        print("Received data:", data)
+        name = data.get('name')
+        email = data.get('email')
+        password = data.get('password')
+        # name = request.form['name']
+        # email = request.form['email']
+        # password = request.form['password']
         response = users_table.get_item(Key={'email': email})
         if 'Item' in response:
             return "User already exists", 400
