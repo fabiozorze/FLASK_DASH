@@ -1,4 +1,4 @@
-import { ButtonForm, ContainerForm } from "./styles"
+import { ButtonForm, ContainerActions, ContainerForm, CreateAccountLink } from "./styles"
 import { EnvelopeSimpleIcon, LockIcon } from "@phosphor-icons/react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -18,7 +18,7 @@ const signInUserFormSchema = z.object({
 
 export function FormLogin() {
 
-     const navigate = useNavigate() 
+    const navigate = useNavigate()
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(signInUserFormSchema),
@@ -34,7 +34,7 @@ export function FormLogin() {
             });
             // ✅ If login is successful, redirect or go to 2FA
             console.log("Login successful", response.data);
-            navigate("/TwoFactorAuth", {replace: true})
+            navigate("/TwoFactorAuth", { replace: true })
             // window.location.href = "/TwoFactorAuth";// example - adjust to your route
 
         } catch (error: any) {
@@ -49,7 +49,7 @@ export function FormLogin() {
 
     async function handleRegister() {
         try {
-            navigate("/SignUp")
+            navigate("/SignUp", { replace: true })
             //window.open("http://localhost:5001/auth/register.html", "_self");
         } catch (error) {
             alert("❌ Código inválido");
@@ -85,13 +85,18 @@ export function FormLogin() {
                     <a>esqueceu a senha?</a>
                 </div>
 
-                <ButtonForm type="submit">ENTRAR</ButtonForm>
-                <a href="#" onClick={e => {
-                        e.preventDefault()   // prevent the href="#" from jumping
-                        handleRegister()     // call your function when clicked
-                    }}>
-                    Ainda não possui uma conta?
-                </a>
+                <ContainerActions>
+                    <ButtonForm type="submit">ENTRAR</ButtonForm>
+                    <CreateAccountLink>
+                        Ainda não possui uma conta?<a href="#" onClick={e => {
+                            e.preventDefault()   // prevent the href="#" from jumping
+                            handleRegister()     // call your function when clicked
+                        }}>Sign Up</a>
+                    </CreateAccountLink>
+
+                </ContainerActions>
+
+
             </form>
         </ContainerForm>
     )

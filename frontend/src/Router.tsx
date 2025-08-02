@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { Login } from "./auth/Login"
-import { Home } from "./pages/Home"
+import { Home } from "./pages/Dashboard"
 import { Authentication } from "./auth/Login/Components/FormLogin/TwoFactorAuth"
 import { SignUp } from "./auth/Login/Components/FormLogin/SignUp"
 

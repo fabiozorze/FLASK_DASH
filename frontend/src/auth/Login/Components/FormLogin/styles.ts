@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContainerForm = styled.div`
 
-background:  rgba(46, 0, 79, .7);
+background:  rgba(46, 0, 79, .3);
 
 width: min(90vw, 37.6rem);
 height: min(90vh, 42rem);
@@ -77,7 +77,17 @@ input{
     transition: border 0.3s ease;
 
     color: ${props=> props.theme.colors["white"]};
-    caret-color: ${props=> props.theme.colors["green"]}; // Change input cursor color
+    caret-color: ${props=> props.theme.colors["green"]};// Change input cursor color
+    
+    /* override Chrome’s yellow/white autofill background */
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: ${props=>props.theme.colors["white"]} !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 }
 
 form > div:nth-child(2)>input{
@@ -103,13 +113,24 @@ form > a{
 
 `
 
+export const ContainerActions = styled.div`
+
+display: flex;
+flex:1;
+align-items: center;
+
+`
+
 export const ButtonForm = styled.button`
 
-background: ${props=> props.theme.colors["purple"]};
+background: ${props=> props.theme.colors["green"]};
+
+width: 100%;
 
 height: 3.8rem;
 
 border: none;
+border-radius: 8px;
 
 font-size: ${props=> props.theme.fontSizes.md};
 font-weight: ${props=> props.theme.fontWeights.bold};
@@ -119,4 +140,20 @@ margin-bottom: 1rem;
 
 cursor: pointer;
 
+`
+
+export const CreateAccountLink = styled.p`
+
+
+
+display: flex;
+align-items: center;
+gap: .3rem;
+
+color: ${props=> props.theme.colors["white"]};
+width: ${props=> props.theme.fontWeights["bold"]};
+
+a{
+    color: ${props=> props.theme.colors["green"]};
+}
 `

@@ -16,6 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { api } from "../../../../../lib/axios"
 import { useNavigate } from "react-router-dom";
 import { useState } from "react"
+import { Helmet } from "react-helmet-async"
 
 
 const createUserFormSchema = z.object({
@@ -53,7 +54,8 @@ export function SignUp() {
                     // ✅ If login is successful, redirect or go to 2FA
                     console.log("Login successful", response.data);
                     // navigate("/TwoFactorAuth", {replace: true})
-                    window.open("http://localhost:5001/flask-preview", "_self");
+                    window.open("http://localhost:5001/auth/setup-2fa", "_self");
+                    // navigate('/auth/setup-2fa', { replace: true })
         
                 } catch (error: any) {
                     if (error.response && error.response.status === 403) {
@@ -77,6 +79,7 @@ export function SignUp() {
 
     return (
         <Container>
+            <Helmet title="SignUp"/>
             <form onSubmit={handleSubmit(handleSignUp)}>
                 <ContainerTitleSignUp>
                     <h1>SIGN UP</h1>
@@ -139,7 +142,6 @@ export function SignUp() {
                                 <Checkmark>✓</Checkmark>
                             </StyledCheckbox>
                             <span>Li e aceito a <a href="#">Política de Privacidade</a></span>
-
                         </label>
                     </ContainerCheckBox>
                 </ContainerPolices>

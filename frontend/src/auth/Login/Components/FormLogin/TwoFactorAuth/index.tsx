@@ -5,6 +5,7 @@ import { useForm, useFieldArray } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -70,6 +71,7 @@ export function Authentication() {
     return (
 
         <ContainerAuth>
+            <Helmet title="Authentication"/>
             <AuthImage>
                 <i><KeyIcon size={75} /></i>
             </AuthImage>
