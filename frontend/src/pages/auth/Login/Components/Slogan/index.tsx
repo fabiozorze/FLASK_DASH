@@ -1,6 +1,6 @@
-import { useState } from "react";
+
 import { ContainerSlogan, Typewriter } from "./styles";
-import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { useTypewriter } from "react-simple-typewriter";
 
 
 export function Slogan() {

@@ -1,11 +1,11 @@
 import { AuthImage, ContainerAuth } from "./styles";
 import { KeyIcon } from "@phosphor-icons/react"
-import { api } from "../../../../../lib/axios"
+import { api } from "../../../../../../_lib/axios"
 import { useForm, useFieldArray } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
-import { Helmet } from "react-helmet-async";
+import { toast } from "sonner";
 
 
 
@@ -60,18 +60,19 @@ export function Authentication() {
 
         try {
             await api.post("/auth/verify-2fa", { code }, { withCredentials: true });
-            alert("✅ Código verificado!");
+            //alert("✅ Código verificado!");
             console.log("submitted!", data);
+            toast.success("✅ Código verificado!")
             // window.location.replace("http://localhost:5000/"); // or redirect
             window.open("http://localhost:5001/flask-preview", "_self");
         } catch (error) {
-            alert("❌ Código inválido");
+            //alert("❌ Código inválido");
+            toast.error("❌ Código inválido")
         }
     }
     return (
 
         <ContainerAuth>
-            <Helmet title="Authentication"/>
             <AuthImage>
                 <i><KeyIcon size={75} /></i>
             </AuthImage>

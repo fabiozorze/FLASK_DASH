@@ -3,8 +3,9 @@ import { EnvelopeSimpleIcon, LockIcon } from "@phosphor-icons/react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { api } from "../../../../lib/axios"
+import { api } from "../../../../../_lib/axios"
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner"
 
 
 const signInUserFormSchema = z.object({
@@ -34,22 +35,25 @@ export function FormLogin() {
             });
             // ✅ If login is successful, redirect or go to 2FA
             console.log("Login successful", response.data);
-            navigate("/TwoFactorAuth", { replace: true })
+            toast.success("Login realizado com successo.")
+            navigate("/two-factor", { replace: true })
             // window.location.href = "/TwoFactorAuth";// example - adjust to your route
 
         } catch (error: any) {
             if (error.response && error.response.status === 403) {
-                alert("Email ou senha inválidos");
+                //alert("Email ou senha inválidos");
+                toast.error("Email ou senha inválidos.")
             } else {
-                alert("Erro ao tentar fazer login");
+                //alert("Erro ao tentar fazer login");
                 console.error(error);
+                toast.error("Erro ao tentar fazer login.")
             }
         }
     }
 
     async function handleRegister() {
         try {
-            navigate("/SignUp", { replace: true })
+            navigate("/signup", { replace: true })
             //window.open("http://localhost:5001/auth/register.html", "_self");
         } catch (error) {
             alert("❌ Código inválido");

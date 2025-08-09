@@ -1,17 +1,31 @@
-import { Route, Routes } from "react-router-dom"
-import { Login } from "./auth/Login"
-import { Home } from "./pages/Dashboard"
-import { Authentication } from "./auth/Login/Components/FormLogin/TwoFactorAuth"
-import { SignUp } from "./auth/Login/Components/FormLogin/SignUp"
+import { createBrowserRouter } from "react-router-dom"
+import { Login } from "./pages/auth/Login"
+import { Dashboard } from "./pages/dashboard"
+import { Authentication } from "./pages/auth/Login/Components/FormLogin/TwoFactorAuth"
+import { SignUp } from "./pages/auth/Login/Components/FormLogin/SignUp"
+import { DashboardLayout } from "./pages/_layout/dashboard"
+import { Portfolio } from "./pages/portfolio"
+// import { DashboardLayout } from "./pages/_layout/dashboard"
 
+// Flat route table that matches your current working paths
+// export const router = createBrowserRouter([
+//   { path: "/", element: <Login /> },
+//   { path: "/dashboard", element: <Dashboard /> },
+//   { path: "/two-factor", element: <Authentication /> },
+//   { path: "/signup", element: <SignUp /> },
+// ])
 
-export function Router() {
-    return (
-        <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/TwoFactorAuth" element={<Authentication />} />
-            <Route path="/SignUp" element={<SignUp/>} />
-        </Routes>
-    )
-}
+// If/when you want a layout for dashboard-only pages, use this shape instead:
+export const router = createBrowserRouter([
+  { path: "/", element: <Login /> },
+  { path: "/signup", element: <SignUp /> },
+  { path: "/two-factor", element: <Authentication /> },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      { index: true, element: <Dashboard /> },
+      { path: "portfolio", element: <Portfolio /> }
+    ],
+  },
+])

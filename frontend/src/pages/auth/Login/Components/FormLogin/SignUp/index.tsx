@@ -13,10 +13,9 @@ import {
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { api } from "../../../../../lib/axios"
-import { useNavigate } from "react-router-dom";
+import { api } from "../../../../../../_lib/axios"
+import { useNavigate } from "react-router-dom"
 import { useState } from "react"
-import { Helmet } from "react-helmet-async"
 
 
 const createUserFormSchema = z.object({
@@ -79,7 +78,6 @@ export function SignUp() {
 
     return (
         <Container>
-            <Helmet title="SignUp"/>
             <form onSubmit={handleSubmit(handleSignUp)}>
                 <ContainerTitleSignUp>
                     <h1>SIGN UP</h1>
