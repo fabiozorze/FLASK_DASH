@@ -1,7 +1,11 @@
+import { ContainerDashboard } from "../Dashboard/styles";
+import { CardOne } from "../Dashboard/components/card_one";
+
+
 export function Dashboard(){
     return(
-        <>
-        <h1>Heloo I am Home</h1>
-        </>
+        <ContainerDashboard>
+            <CardOne />
+        </ContainerDashboard>
     )
 }
