@@ -15,6 +15,7 @@ export const defaultTheme = {
         bgLight: '#f9f9f9',
         bgWhite: '#ffffff',
         bgGray: '#f3f4f6',
+        bgGrayDark: "#222222",
         
         // Borders and lines
         borderGray: '#ccc',
@@ -40,7 +41,8 @@ export const defaultTheme = {
     },
 
     fontSizes: {
-        xs: '0.8rem',    // Very small labels
+        xxs: '0.6rem',    // Extra small labels
+        xs: '0.8rem',    // Very small 
         sm: '0.9rem',    // Small text like terms or footnotes
         base: '1rem',    // Paragraphs or input labels
         md: '1rem',      // Section titles like "Faça seu login"

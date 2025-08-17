@@ -1,6 +1,5 @@
 
 import { Container, NavLink, Separator } from "./styles";
-
 import { PresentationChartIcon, ChartPieSliceIcon } from "@phosphor-icons/react"
 
 

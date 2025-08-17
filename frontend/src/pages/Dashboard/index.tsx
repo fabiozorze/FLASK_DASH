@@ -1,5 +1,5 @@
 import { ContainerDashboard } from "../Dashboard/styles";
-import { CardOne } from "../Dashboard/components/card_one";
+import { CardOne } from "./components/CardOne";
 
 
 export function Dashboard(){

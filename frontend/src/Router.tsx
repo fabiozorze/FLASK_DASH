@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom"
 import { Login } from "./pages/auth/Login"
-import { Dashboard } from "./pages/dashboard"
+import { Dashboard } from "./pages/Dashboard"
 import { Authentication } from "./pages/auth/Login/Components/FormLogin/TwoFactorAuth"
 import { SignUp } from "./pages/auth/Login/Components/FormLogin/SignUp"
 import { DashboardLayout } from "./pages/_layout/dashboard"
