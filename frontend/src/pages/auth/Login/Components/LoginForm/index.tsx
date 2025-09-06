@@ -1,5 +1,6 @@
 import { ButtonForm, ButtonShowPassword, ContainerActions, ContainerForm, ContainerInputPassword, ContainerInputs, CreateAccountLink, Input, InputPassword } from "./styles"
 import { EnvelopeSimpleIcon, EyeIcon, EyeSlashIcon, LockIcon } from "@phosphor-icons/react"
+import * as Dialog from "@radix-ui/react-dialog";
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -9,6 +10,7 @@ import { toast } from "sonner"
 import { useMutation } from "@tanstack/react-query"
 import { login } from "@/services/login"
 import { useState } from "react"
+import { TwoFactorAuthModal } from "../TwoFactorAuthModal";
 
 
 const signInUserFormSchema = z.object({
@@ -22,7 +24,8 @@ const signInUserFormSchema = z.object({
 
 export function LoginForm() {
 
-    const[isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [showTwoFactorModal, setShowTwoFactorModal] = useState(false);
 
     const navigate = useNavigate()
 
@@ -30,15 +33,15 @@ export function LoginForm() {
         resolver: zodResolver(signInUserFormSchema),
     });
 
-    const { mutateAsync: authenticate} = useMutation({
-        mutationFn: login,	
+    const { mutateAsync: authenticate } = useMutation({
+        mutationFn: login,
     })
 
     async function handleLogin(data: z.infer<typeof signInUserFormSchema>) {
         // const { email, password } = data;
 
         try {
-            await authenticate({email: data.email, password: data.password})
+            await authenticate({ email: data.email, password: data.password })
             // const response = await api.post("/auth/login", {
             //     email,
             //     password
@@ -47,7 +50,9 @@ export function LoginForm() {
             // ✅ If login is successful, redirect or go to 2FA
             console.log("Login successful", /*response.data*/);
             toast.success("Login realizado com successo.")
-            navigate("/two-factor", { replace: true })
+
+            setShowTwoFactorModal(true);
+            //navigate("/two-factor", { replace: true })
             // window.location.href = "/TwoFactorAuth";// example - adjust to your route
 
         } catch (error: any) {
@@ -71,7 +76,7 @@ export function LoginForm() {
         }
     }
 
-    function handleShowPassword(){
+    function handleShowPassword() {
         setIsPasswordVisible(!isPasswordVisible)
     }
 
@@ -98,19 +103,20 @@ export function LoginForm() {
                     <i><LockIcon size={22} /></i>
                     <ContainerInputPassword>
                         <InputPassword type={isPasswordVisible ? "text" : "password"}
-                        {...register("password", { required: "Senha é obrigatória" })}
+                            {...register("password", { required: "Senha é obrigatória" })}
                         />
                         <ButtonShowPassword onClick={handleShowPassword} type="button">
-                            {isPasswordVisible ? <EyeIcon size={30} color="#fff"/> : <EyeSlashIcon size={30} color="#fff"/>}
+                            {isPasswordVisible ? <EyeIcon size={30} color="#fff" /> : <EyeSlashIcon size={30} color="#fff" />}
                         </ButtonShowPassword>
                     </ContainerInputPassword>
 
-                    
+
                     {errors.password && <span>{errors.password.message}</span>}
                     <a>esqueceu a senha?</a>
                 </ContainerInputs>
 
                 <ContainerActions>
+
                     <ButtonForm type="submit">ENTRAR</ButtonForm>
                     <CreateAccountLink>
                         Ainda não possui uma conta?<a href="#" onClick={e => {
@@ -118,11 +124,14 @@ export function LoginForm() {
                             handleRegister()     // call your function when clicked
                         }}>Sign Up</a>
                     </CreateAccountLink>
-
                 </ContainerActions>
-
-
             </form>
+
+
+            {/*Using radix UI to create a modal for the 2fac authentication*/}
+            <Dialog.Root open={showTwoFactorModal} onOpenChange={setShowTwoFactorModal}>
+                <TwoFactorAuthModal onSuccess={() => setShowTwoFactorModal(false)} />
+            </Dialog.Root>
         </ContainerForm>
     )
 }
