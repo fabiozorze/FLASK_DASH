@@ -9,7 +9,7 @@ import { ArrowLineUpLeftIcon} from "@phosphor-icons/react"
 
 import BTC from"@/assets/currency-icons/btc.png"
 import ETH from"@/assets/currency-icons/eth.png"
-import { PerformanceChart } from "../PerformanceChart"
+import { PerformanceChart } from "@/components/charts/PerformanceChart"
 
 
 export function StrategyPerformance(){

@@ -45,50 +45,11 @@ form label{
     font-weight: ${props=> props.theme.fontWeights.bold};
 }
 
-form div{
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-
-    position: relative;
-}
-
-form div i{
-    position: absolute;
-    top: 32%;
-    left: 10px;
-
-}
 
 input:focus{
     border-bottom: 2px solid ${props=> props.theme.colors["green"]};
 }
 
-input{
-    padding: 10px 55px;
-    font-size: 1em;
-
-    background-color: transparent;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 2px solid #ccc;
-
-    transition: border 0.3s ease;
-
-    color: ${props=> props.theme.colors["white"]};
-    caret-color: ${props=> props.theme.colors["green"]};// Change input cursor color
-    
-    /* override Chrome’s yellow/white autofill background */
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-    -webkit-text-fill-color: ${props=>props.theme.colors["white"]} !important;
-    transition: background-color 5000s ease-in-out 0s;
-  }
-}
 
 form > div:nth-child(2)>input{
     margin-bottom: .3rem;
@@ -113,9 +74,113 @@ form > a{
 
 `
 
+export const ContainerInputs = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    position: relative;
+
+    i{
+    position: absolute;
+    top: 32%;
+    left: 10px;
+
+}
+
+`
+
+export const Input = styled.input`
+
+    padding: 10px 55px;
+    font-size: 1em;
+
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #ccc;
+
+    transition: border 0.3s ease;
+
+    color: ${props=> props.theme.colors["white"]};
+    caret-color: ${props=> props.theme.colors["green"]};// Change input cursor color
+    
+    /* override Chrome’s yellow/white autofill background */
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: ${props=>props.theme.colors["white"]} !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+
+`
+export const ContainerInputPassword = styled.div`
+width: 100%;
+display: flex;
+align-items: flex-end;
+
+position: relative;
+
+`	
+
+export const InputPassword = styled.input`
+
+    width: 100%;
+    padding: 10px 55px;
+    font-size: 1em;
+
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #ccc;
+
+    transition: border 0.3s ease;
+
+    color: ${props=> props.theme.colors["white"]};
+    caret-color: ${props=> props.theme.colors["green"]};// Change input cursor color
+    
+    /* override Chrome’s yellow/white autofill background */
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: ${props=>props.theme.colors["white"]} !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+
+`
+
+export const ButtonShowPassword = styled.button`
+background-color: transparent;
+position: absolute;
+right: 10px;
+
+width: 50px;
+height: 40px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border: none;
+
+cursor: pointer;
+
+
+`
+
 export const ContainerActions = styled.div`
 
 display: flex;
+flex-direction: column;
 flex:1;
 align-items: center;
 

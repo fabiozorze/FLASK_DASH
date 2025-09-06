@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SignUpBG from "../../../../../../assets/img/sign_up_background.png"
+import SignUpBG from "@/assets/img/sign_up_background.png"
 
 export const Container = styled.div`
     background: url(${SignUpBG}) no-repeat center center/cover;

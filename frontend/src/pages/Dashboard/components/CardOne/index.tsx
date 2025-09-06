@@ -1,11 +1,19 @@
-import { AllocationBar } from "../AllocationBar";
-import { StrategyPerformance } from "../StrategyPerformance";
+import { getProfile } from "@/services/get-profile";
+import { AllocationBar } from "../../../../components/charts/AllocationBar";
+import { StrategyPerformance } from "../../../../components/charts/StrategyPerformance";
 import { ButtonCreateStrategy, ButtonDtail, CardContainer, ContainerCardTitle, ContainerDetails } from "./styles";
-
+import { useQuery } from "@tanstack/react-query";
 export function CardOne() {
 
     const btcValue = 20 * 3000;
     const ethValue = 10 * 1000;
+
+    const {data: profile} = useQuery({
+        queryKey:["profile"],
+        queryFn: getProfile,
+    })
+
+    console.log(profile)
 
     return (
         <CardContainer>

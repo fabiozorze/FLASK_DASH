@@ -13,10 +13,11 @@ import {
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { api } from "../../../../../../_lib/axios"
+// import { api } from "../../../_lib/axios"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
-
+import { useMutation } from "@tanstack/react-query"
+import { registerUser } from "@/services/register"
 
 const createUserFormSchema = z.object({
     name: z.string().nonempty("Campo Nome é obrogatario"),
@@ -41,17 +42,23 @@ export function SignUp() {
         console.log("Checkbox clicked")
     };
 
+    const { mutateAsync: registerUserFn} = useMutation({
+        mutationFn: registerUser,	
+    })
+
     async function handleSignUp(data: z.infer<typeof createUserFormSchema> ){
         const { name, email, password } = data;
 
                 try {
-                    const response = await api.post("/auth/register", {
-                        name,
-                        email,
-                        password
-                    });
+                    await registerUserFn({name, email, password})
+                    // const response = await api.post("/auth/register", {
+                    //     name,
+                    //     email,
+                    //     password
+                    // });
+                    
                     // ✅ If login is successful, redirect or go to 2FA
-                    console.log("Login successful", response.data);
+                    console.log("Login successful", /*response.data*/);
                     // navigate("/TwoFactorAuth", {replace: true})
                     window.open("http://localhost:5001/auth/setup-2fa", "_self");
                     // navigate('/auth/setup-2fa', { replace: true })

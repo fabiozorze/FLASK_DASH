@@ -1,11 +1,14 @@
-import { ButtonForm, ContainerActions, ContainerForm, CreateAccountLink } from "./styles"
-import { EnvelopeSimpleIcon, LockIcon } from "@phosphor-icons/react"
+import { ButtonForm, ButtonShowPassword, ContainerActions, ContainerForm, ContainerInputPassword, ContainerInputs, CreateAccountLink, Input, InputPassword } from "./styles"
+import { EnvelopeSimpleIcon, EyeIcon, EyeSlashIcon, LockIcon } from "@phosphor-icons/react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { api } from "../../../../../_lib/axios"
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner"
+import { useMutation } from "@tanstack/react-query"
+import { login } from "@/services/login"
+import { useState } from "react"
 
 
 const signInUserFormSchema = z.object({
@@ -17,7 +20,9 @@ const signInUserFormSchema = z.object({
 })
 
 
-export function FormLogin() {
+export function LoginForm() {
+
+    const[isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     const navigate = useNavigate()
 
@@ -25,16 +30,22 @@ export function FormLogin() {
         resolver: zodResolver(signInUserFormSchema),
     });
 
+    const { mutateAsync: authenticate} = useMutation({
+        mutationFn: login,	
+    })
+
     async function handleLogin(data: z.infer<typeof signInUserFormSchema>) {
-        const { email, password } = data;
+        // const { email, password } = data;
 
         try {
-            const response = await api.post("/auth/login", {
-                email,
-                password
-            });
+            await authenticate({email: data.email, password: data.password})
+            // const response = await api.post("/auth/login", {
+            //     email,
+            //     password
+            // });
+
             // ✅ If login is successful, redirect or go to 2FA
-            console.log("Login successful", response.data);
+            console.log("Login successful", /*response.data*/);
             toast.success("Login realizado com successo.")
             navigate("/two-factor", { replace: true })
             // window.location.href = "/TwoFactorAuth";// example - adjust to your route
@@ -60,6 +71,10 @@ export function FormLogin() {
         }
     }
 
+    function handleShowPassword(){
+        setIsPasswordVisible(!isPasswordVisible)
+    }
+
     return (
         <ContainerForm>
             <div>
@@ -68,26 +83,32 @@ export function FormLogin() {
             </div>
 
             <form onSubmit={handleSubmit(handleLogin)}>
-                <div>
+                <ContainerInputs>
                     <label>Email ou CPF</label>
                     <i><EnvelopeSimpleIcon size={22} /></i>
-                    <input
+                    <Input
                         type="email"
                         {...register("email", { required: "Email é obrigatório" })}
                     />
                     {errors.email && <span>{errors.email.message}</span>}
-                </div>
+                </ContainerInputs>
 
-                <div>
+                <ContainerInputs>
                     <label>Senha</label>
                     <i><LockIcon size={22} /></i>
-                    <input
-                        type="password"
+                    <ContainerInputPassword>
+                        <InputPassword type={isPasswordVisible ? "text" : "password"}
                         {...register("password", { required: "Senha é obrigatória" })}
-                    />
+                        />
+                        <ButtonShowPassword onClick={handleShowPassword} type="button">
+                            {isPasswordVisible ? <EyeIcon size={30} color="#fff"/> : <EyeSlashIcon size={30} color="#fff"/>}
+                        </ButtonShowPassword>
+                    </ContainerInputPassword>
+
+                    
                     {errors.password && <span>{errors.password.message}</span>}
                     <a>esqueceu a senha?</a>
-                </div>
+                </ContainerInputs>
 
                 <ContainerActions>
                     <ButtonForm type="submit">ENTRAR</ButtonForm>

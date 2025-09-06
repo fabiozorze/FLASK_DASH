@@ -1,7 +1,8 @@
 import { AuthImage, ContainerAuth } from "./styles";
 import { KeyIcon } from "@phosphor-icons/react"
-import { api } from "../../../../../../_lib/axios"
+import { api } from "../../../_lib/axios"
 import { useForm, useFieldArray } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
@@ -27,6 +28,8 @@ const verify2FASchema = z.object({
 type FormData = z.infer<typeof verify2FASchema>;
 
 export function Authentication() {
+    
+    const navigate = useNavigate()
 
     const {
         register,
@@ -64,7 +67,8 @@ export function Authentication() {
             console.log("submitted!", data);
             toast.success("✅ Código verificado!")
             // window.location.replace("http://localhost:5000/"); // or redirect
-            window.open("http://localhost:5001/flask-preview", "_self");
+            //window.open("http://localhost:5001/flask-preview", "_self");
+            navigate("/dashboard", { replace: true })
         } catch (error) {
             //alert("❌ Código inválido");
             toast.error("❌ Código inválido")
