@@ -18,6 +18,8 @@ import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useMutation } from "@tanstack/react-query"
 import { registerUser } from "@/services/register"
+import * as Dialog  from "@radix-ui/react-dialog"
+import { RegisterTwoFactorAuthModal } from "@/components/common/RegisterTwoFactorAuthModal"
 
 const createUserFormSchema = z.object({
     name: z.string().nonempty("Campo Nome é obrogatario"),
@@ -29,28 +31,43 @@ const createUserFormSchema = z.object({
 
 export function SignUp() {
 
-    const navigate = useNavigate() 
+    const navigate = useNavigate();
+    const [showTwoFactorModal, setShowTwoFactorModal] = useState(true);
+    const [isChecked, setIsChecked] = useState(false);
+    const [isRegistered, setIsRegistered] = useState(false);
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(createUserFormSchema),
     });
 
-    const [isChecked, setIsChecked] = useState(false);
+    const { mutateAsync: registerUserFn} = useMutation({
+        mutationFn: registerUser,	
+    })
+
+
+
 
     const handleChange = () => {
         setIsChecked(!isChecked);
         console.log("Checkbox clicked")
     };
 
-    const { mutateAsync: registerUserFn} = useMutation({
-        mutationFn: registerUser,	
-    })
+    const handle2FASuccess = () => {
+        setShowTwoFactorModal(false);
+        navigate("/dashboard", { replace: true })
+    }
+
+
+
 
     async function handleSignUp(data: z.infer<typeof createUserFormSchema> ){
-        const { name, email, password } = data;
+        //const { name, email, password } = data;
+        if(isRegistered){
+            return;
+        }
 
                 try {
-                    await registerUserFn({name, email, password})
+                    const response = await registerUserFn(data)
                     // const response = await api.post("/auth/register", {
                     //     name,
                     //     email,
@@ -59,8 +76,14 @@ export function SignUp() {
                     
                     // ✅ If login is successful, redirect or go to 2FA
                     console.log("Login successful", /*response.data*/);
+
+                    if(response.needs_2fa_setup){
+                        console.log("I am here!!!!!!");
+                        setIsRegistered(true);
+                        setShowTwoFactorModal(true);
+                    }
                     // navigate("/TwoFactorAuth", {replace: true})
-                    window.open("http://localhost:5001/auth/setup-2fa", "_self");
+                    //window.open("http://localhost:5001/auth/setup-2fa", "_self");
                     // navigate('/auth/setup-2fa', { replace: true })
         
                 } catch (error: any) {
@@ -162,6 +185,16 @@ export function SignUp() {
                     <ButtonFormSignUp type="submit">ENVIAR</ButtonFormSignUp >
                 </ContainerActions>
 
+            {/*Using radix UI to create a modal for the 2fac authentication*/}
+            {
+                showTwoFactorModal && (
+                    <Dialog.Root open={showTwoFactorModal} onOpenChange={setShowTwoFactorModal}>
+                    <Dialog.Trigger asChild>
+                        <RegisterTwoFactorAuthModal onSuccess={handle2FASuccess} />
+                    </Dialog.Trigger>
+                </Dialog.Root>
+                )
+            }
 
             </form>
         </Container>

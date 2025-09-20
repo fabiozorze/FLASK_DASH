@@ -209,8 +209,6 @@ cursor: pointer;
 
 export const CreateAccountLink = styled.p`
 
-
-
 display: flex;
 align-items: center;
 gap: .3rem;

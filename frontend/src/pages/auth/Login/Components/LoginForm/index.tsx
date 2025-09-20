@@ -4,13 +4,12 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { api } from "../../../../../_lib/axios"
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner"
 import { useMutation } from "@tanstack/react-query"
 import { login } from "@/services/login"
 import { useState } from "react"
-import { TwoFactorAuthModal } from "../TwoFactorAuthModal";
+import { TwoFactorAuthModal } from "../../../../../components/common/TwoFactorAuthModal";
 
 
 const signInUserFormSchema = z.object({
@@ -25,7 +24,7 @@ const signInUserFormSchema = z.object({
 export function LoginForm() {
 
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-    const [showTwoFactorModal, setShowTwoFactorModal] = useState(false);
+    const [showTwoFactorModal, setShowTwoFactorModal] = useState(true);
 
     const navigate = useNavigate()
 
@@ -130,7 +129,9 @@ export function LoginForm() {
 
             {/*Using radix UI to create a modal for the 2fac authentication*/}
             <Dialog.Root open={showTwoFactorModal} onOpenChange={setShowTwoFactorModal}>
-                <TwoFactorAuthModal onSuccess={() => setShowTwoFactorModal(false)} />
+                <Dialog.Trigger asChild>
+                    <TwoFactorAuthModal onSuccess={() => setShowTwoFactorModal(false)} />
+                </Dialog.Trigger>
             </Dialog.Root>
         </ContainerForm>
     )
