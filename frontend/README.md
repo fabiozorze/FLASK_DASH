@@ -6,8 +6,10 @@ frontend: npm run dev
 
 # TODO List - FLASK_DASH Project
 
-## I am still working on the QR code display, I have to:
- I have to add create a function to verify the QR that user has inputed and do the authentication
+## I am still working on the QR code display, I have to: 
+  - Check with Fabio If I can change the primary Key from Email to ID
+  - Implement the function when user clicks on Cancel it deletes the user from DB
+  - Study the layout for improvements
 
 
 

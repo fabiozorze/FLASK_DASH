@@ -76,7 +76,11 @@ export function RegisterTwoFactorAuthModal({ onSuccess }: TwoFactorAuthModalProp
 
     async function handleCancel() {
         try {
-        onCancel?.();
+            await api.delete("/auth/cancel-2fa", { withCredentials: true });
+            onCancel?.();
+        } catch (error) {
+            toast.error("Erro ao cancelar 2FA")
+        }
     }
 
 

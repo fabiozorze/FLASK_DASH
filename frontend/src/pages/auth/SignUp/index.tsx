@@ -20,6 +20,7 @@ import { useMutation } from "@tanstack/react-query"
 import { registerUser } from "@/services/register"
 import * as Dialog  from "@radix-ui/react-dialog"
 import { RegisterTwoFactorAuthModal } from "@/components/common/RegisterTwoFactorAuthModal"
+import { insertMaskCPF } from "./utils/cpf"
 
 const createUserFormSchema = z.object({
     name: z.string().nonempty("Campo Nome é obrogatario"),
@@ -35,6 +36,7 @@ export function SignUp() {
     const [showTwoFactorModal, setShowTwoFactorModal] = useState(true);
     const [isChecked, setIsChecked] = useState(false);
     const [isRegistered, setIsRegistered] = useState(false);
+    const [cpf, setCpf] = useState("");
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(createUserFormSchema),
@@ -55,6 +57,10 @@ export function SignUp() {
     const handle2FASuccess = () => {
         setShowTwoFactorModal(false);
         navigate("/dashboard", { replace: true })
+    }
+
+    function handleCpfChange(e: React.ChangeEvent<HTMLInputElement>) {
+        setCpf(insertMaskCPF(e.target.value));
     }
 
 
@@ -128,6 +134,7 @@ export function SignUp() {
                         type="text"
                         placeholder="digite seu cpf"
                         {...register("cpf", { required: "Campo CPF é obrigatório" })}
+                        onChange={(e)=> register.onChange(e.target.value)}
                     />
                     {errors.cpf && <span>{errors.cpf.message}</span>}
                 </ContainerInputs>
