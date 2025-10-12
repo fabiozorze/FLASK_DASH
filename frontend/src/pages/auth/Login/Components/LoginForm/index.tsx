@@ -1,4 +1,4 @@
-import { ButtonForm, ButtonShowPassword, ContainerActions, ContainerForm, ContainerInputPassword, ContainerInputs, CreateAccountLink, Input, InputPassword } from "./styles"
+import { ButtonForm, ButtonShowPassword, ContainerActions, ContainerForgotPassword, ContainerForm, ContainerInputPassword, ContainerInputs, CreateAccountLink, IconEmail, IconPassword, Input, InputPassword } from "./styles"
 import { EnvelopeSimpleIcon, EyeIcon, EyeSlashIcon, LockIcon } from "@phosphor-icons/react"
 import * as Dialog from "@radix-ui/react-dialog";
 import { useForm } from "react-hook-form"
@@ -24,7 +24,7 @@ const signInUserFormSchema = z.object({
 export function LoginForm() {
 
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-    const [showTwoFactorModal, setShowTwoFactorModal] = useState(true);
+    const [showTwoFactorModal, setShowTwoFactorModal] = useState(false);
 
     const navigate = useNavigate()
 
@@ -82,14 +82,14 @@ export function LoginForm() {
     return (
         <ContainerForm>
             <div>
-                <h1>FACA SEU LOGIN</h1>
-                <p>Caso voce ja tenha conta na Invest.AI, ultilize o mesmo login e senha</p>
+                <h1>LOGIN</h1>
+                <p>Entre com seu email e senha para acessar a plataforma</p>
             </div>
 
             <form onSubmit={handleSubmit(handleLogin)}>
                 <ContainerInputs>
                     <label>Email ou CPF</label>
-                    <i><EnvelopeSimpleIcon size={22} /></i>
+                    <IconEmail><EnvelopeSimpleIcon size={22} /></IconEmail>
                     <Input
                         type="email"
                         {...register("email", { required: "Email é obrigatório" })}
@@ -99,7 +99,7 @@ export function LoginForm() {
 
                 <ContainerInputs>
                     <label>Senha</label>
-                    <i><LockIcon size={22} /></i>
+                    <IconPassword><LockIcon size={22} /></IconPassword>
                     <ContainerInputPassword>
                         <InputPassword type={isPasswordVisible ? "text" : "password"}
                             {...register("password", { required: "Senha é obrigatória" })}
@@ -107,11 +107,15 @@ export function LoginForm() {
                         <ButtonShowPassword onClick={handleShowPassword} type="button">
                             {isPasswordVisible ? <EyeIcon size={30} color="#fff" /> : <EyeSlashIcon size={30} color="#fff" />}
                         </ButtonShowPassword>
+                        <ContainerForgotPassword>
+                            <a>esqueceu a senha?</a>
+                        </ContainerForgotPassword>
+                        
                     </ContainerInputPassword>
 
 
                     {errors.password && <span>{errors.password.message}</span>}
-                    <a>esqueceu a senha?</a>
+                    
                 </ContainerInputs>
 
                 <ContainerActions>

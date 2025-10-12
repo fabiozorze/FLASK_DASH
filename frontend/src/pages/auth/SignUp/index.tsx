@@ -33,7 +33,7 @@ const createUserFormSchema = z.object({
 export function SignUp() {
 
     const navigate = useNavigate();
-    const [showTwoFactorModal, setShowTwoFactorModal] = useState(true);
+    const [showTwoFactorModal, setShowTwoFactorModal] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     const [isRegistered, setIsRegistered] = useState(false);
     const [cpf, setCpf] = useState("");

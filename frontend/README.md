@@ -7,9 +7,12 @@ frontend: npm run dev
 # TODO List - FLASK_DASH Project
 
 ## I am still working on the QR code display, I have to: 
-  - Check with Fabio If I can change the primary Key from Email to ID
-  - Implement the function when user clicks on Cancel it deletes the user from DB
-  - Study the layout for improvements
+
+  [x ] Check with Fabio If I can change the primary Key from Email to ID
+  [x ] Implement the function when user clicks on Cancel it deletes the user from DB
+  [ ] Study the layout for improvements
+  [ x] I have implemented the responsiveness function
+  [ ] ATM I do not know for which device break point I have designed I need to check it.
 
 
 

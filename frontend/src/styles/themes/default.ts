@@ -49,6 +49,7 @@ export const defaultTheme = {
         lg: '1.5rem',    // Section titles
         xl: '2.5rem',    // Big title like Invest.IA
         xxl: '3rem',     // Extra large titles
+        xxxl: '5rem',     // Extra large titles
     },
 
     lineHeights: {
@@ -66,4 +67,13 @@ export const defaultTheme = {
     },
 
     radius: '12px',
+
+    breakpoints: {
+        xs: '320px',   // Small phones
+        sm: '480px',   // Large phones
+        md: '768px',   // Tablets
+        lg: '1024px',  // Small laptops
+        xl: '1280px',  // Desktops
+        xxl: '1536px', // Large desktops
+    },
 }

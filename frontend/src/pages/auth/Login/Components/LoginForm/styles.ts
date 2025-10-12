@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { media } from "@/styles/media";
 
 export const ContainerForm = styled.div`
 
-background:  rgba(46, 0, 79, .3);
+background:  rgba(46, 0, 79, .6);
 
 width: min(90vw, 37.6rem);
 height: min(90vh, 42rem);
@@ -10,7 +11,7 @@ height: min(90vh, 42rem);
 display: flex;
 flex-direction: column;
 justify-content: center;
-align-items: center;
+
 gap: 3rem;
 
 box-shadow: 4px 4px 8px 1px rgba(106, 90, 205, 0.2);
@@ -19,18 +20,36 @@ border-radius: 8px;
 
 padding: 0 3.5rem ;
 
+z-index: 2;
+
+${media.xxl}{
+    width: 40rem;
+   height: 50rem;
+
+   gap: 5rem;
+}
+
 >div:first-child{
     display: flex;
     flex-direction: column;
-    align-items: center;  
-    justify-content: center;
-    gap: 1rem;
+     
+    gap: .5rem;
 }
 >div:first-child>h1{
     font-size: ${props=> props.theme.fontSizes.lg};
+    font-family: ${props=> props.theme.fonts["title"]};
+    letter-spacing: ${props=> props.theme.letterSpacing.wide};
+
+    ${media.xxl}{
+        font-size: ${props=> props.theme.fontSizes.xxl};
+    }
 }
 >div:first-child>p{
     font-size: ${props=> props.theme.fontSizes.sm};
+    
+    ${media.xxl}{
+        font-size: ${props=> props.theme.fontSizes.md};
+    }
 }
 form{
     width: 100%;
@@ -43,6 +62,10 @@ form label{
     font-size: ${props=> props.theme.fontSizes.sm};
     color: ${props=> props.theme.colors["white"]};
     font-weight: ${props=> props.theme.fontWeights.bold};
+
+    ${media.xxl}{
+        font-size: ${props=> props.theme.fontSizes.md};
+    }
 }
 
 
@@ -75,20 +98,28 @@ form > a{
 `
 
 export const ContainerInputs = styled.div`
-
     display: flex;
     flex-direction: column;
+    
     gap: .5rem;
 
     position: relative;
 
+
     i{
     position: absolute;
-    top: 32%;
-    left: 10px;
 
+    left: 10px;
 }
 
+`
+
+export const IconEmail = styled.i`
+    top: 50%;
+`
+
+export const IconPassword = styled.i`
+    top: 20%;
 `
 
 export const Input = styled.input`
@@ -120,8 +151,11 @@ export const Input = styled.input`
 
 `
 export const ContainerInputPassword = styled.div`
+
 width: 100%;
+height: 6rem;
 display: flex;
+flex-direction: column;
 align-items: flex-end;
 
 position: relative;
@@ -155,6 +189,11 @@ export const InputPassword = styled.input`
     transition: background-color 5000s ease-in-out 0s;
   }
 
+`
+
+export const ContainerForgotPassword = styled.div`
+
+padding: 1rem 0;
 
 `
 
