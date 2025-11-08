@@ -1,4 +1,17 @@
-import { ButtonForm, ButtonShowPassword, ContainerActions, ContainerForgotPassword, ContainerForm, ContainerInputPassword, ContainerInputs, CreateAccountLink, IconEmail, IconPassword, Input, InputPassword } from "./styles"
+import { ButtonForm, 
+    ButtonShowPassword, 
+    ContainerActions, 
+    ContainerErrorEmail,
+    ContainerForgotPassword, 
+    ContainerForm, 
+    ContainerInputEmail, 
+    ContainerInputPassword, 
+    ContainerInputs, 
+    CreateAccountLink, 
+    IconEmail, 
+    IconPassword, 
+    InputEmail, 
+    InputPassword } from "./styles"
 import { EnvelopeSimpleIcon, EyeIcon, EyeSlashIcon, LockIcon } from "@phosphor-icons/react"
 import * as Dialog from "@radix-ui/react-dialog";
 import { useForm } from "react-hook-form"
@@ -82,40 +95,42 @@ export function LoginForm() {
     return (
         <ContainerForm>
             <div>
-                <h1>LOGIN</h1>
+                <h1>Login</h1>
                 <p>Entre com seu email e senha para acessar a plataforma</p>
             </div>
 
             <form onSubmit={handleSubmit(handleLogin)}>
                 <ContainerInputs>
                     <label>Email ou CPF</label>
-                    <IconEmail><EnvelopeSimpleIcon size={22} /></IconEmail>
-                    <Input
-                        type="email"
-                        {...register("email", { required: "Email é obrigatório" })}
-                    />
-                    {errors.email && <span>{errors.email.message}</span>}
+                    <IconEmail><EnvelopeSimpleIcon size={22} color="black" /></IconEmail>
+                    <ContainerInputEmail>
+                        <InputEmail
+                            type="email"
+                            {...register("email", { required: "Email é obrigatório" })}
+                        />
+                    </ContainerInputEmail>
+
+                    <ContainerErrorEmail>
+                        {errors.email && <span>{errors.email.message}</span>}
+                    </ContainerErrorEmail>
                 </ContainerInputs>
 
                 <ContainerInputs>
                     <label>Senha</label>
-                    <IconPassword><LockIcon size={22} /></IconPassword>
+                    <IconPassword><LockIcon size={22} color="black" /></IconPassword>
                     <ContainerInputPassword>
                         <InputPassword type={isPasswordVisible ? "text" : "password"}
                             {...register("password", { required: "Senha é obrigatória" })}
                         />
                         <ButtonShowPassword onClick={handleShowPassword} type="button">
-                            {isPasswordVisible ? <EyeIcon size={30} color="#fff" /> : <EyeSlashIcon size={30} color="#fff" />}
+                            {isPasswordVisible ? <EyeIcon size={30} color="black" /> : <EyeSlashIcon size={30} color="black" />}
                         </ButtonShowPassword>
                         <ContainerForgotPassword>
+                            {errors.password && <span>{errors.password.message}</span>}
                             <a>esqueceu a senha?</a>
+
                         </ContainerForgotPassword>
-                        
                     </ContainerInputPassword>
-
-
-                    {errors.password && <span>{errors.password.message}</span>}
-                    
                 </ContainerInputs>
 
                 <ContainerActions>
@@ -125,7 +140,7 @@ export function LoginForm() {
                         Ainda não possui uma conta?<a href="#" onClick={e => {
                             e.preventDefault()   // prevent the href="#" from jumping
                             handleRegister()     // call your function when clicked
-                        }}>Sign Up</a>
+                        }}>Criar uma conta</a>
                     </CreateAccountLink>
                 </ContainerActions>
             </form>
@@ -140,3 +155,8 @@ export function LoginForm() {
         </ContainerForm>
     )
 }
+
+
+
+
+

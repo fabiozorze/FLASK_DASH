@@ -3,16 +3,19 @@ import { media } from "@/styles/media";
 
 export const ContainerSlogan = styled.div`
 
-width: min(90vw, 37.6rem);
+background: rgba(34, 34, 34, .8);
+
+width: 100%;
+height: min(90vh, 42rem);
 
 display: flex;
 flex-direction: column;
-text-align: center;
-z-index: 2;
+justify-content: center;
+align-items: center;
 
-div{
-    width: 100%;
-}
+border-radius: 8px 0 0 8px;
+
+
 
 h1{
     color: ${props=> props.theme.colors["white"]};
@@ -37,7 +40,7 @@ export const Typewriter = styled.p`
   min-height: 1.2em;
 
   font-family: ${props=> props.theme.fonts["slogan"]};
-  font-size: ${props=> props.theme.fontSizes["lg"]};
+  font-size: ${props=> props.theme.fontSizes["base"]};
   font-weight: ${props=> props.theme.fontWeights["light"]};
   color: ${props=> props.theme.colors["white"]};
 

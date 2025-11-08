@@ -20,9 +20,9 @@ export function Slogan() {
 
     return (
         <ContainerSlogan>
-            <div>
+
                 <h1>Invest<span>.AI</span></h1>
-            </div>
+
             
             {
                 !isDone ?

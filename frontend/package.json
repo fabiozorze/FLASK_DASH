@@ -30,6 +30,8 @@
     "styled-components": "^6.1.19",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
+    "three": "^0.181.0",
+    "vanta": "^0.5.24",
     "zod": "^4.0.5"
   },
   "devDependencies": {
@@ -37,6 +39,7 @@
     "@types/node": "^24.2.1",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
+    "@types/three": "^0.181.0",
     "@vitejs/plugin-react": "^4.5.2",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.29.0",

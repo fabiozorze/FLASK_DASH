@@ -3,23 +3,34 @@ import LoginBG from "../../../assets/img/login_background.png"
 import { media } from "@/styles/media";
 
 export const Container = styled.div`
-    width: 100vw;
-    height: 100vh;
+width: 100vw;
+height: 100vh;
 
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20rem;
-
-    background: url(${LoginBG}) no-repeat center center/cover;
-
-    padding: 0 7rem;
-
-    ${media.xxl}{
-        gap: 60rem;
-    }
-
+display: flex;
+align-items: center;
+justify-content: center;
 
 `;
+
+export const ContainerContent = styled.div`
+
+width: 78rem;
+
+display: flex;
+
+align-items: center;
+justify-content: space-between;
+
+border: 1px solid ${props=> props.theme.colors["borderGray"]};	
+border-radius: 8px;
+
+//background: url(${LoginBG}) no-repeat center center/cover;
+
+/* 
+${media.xxl}{
+    gap: 60rem;
+} */
+
+
+
+`

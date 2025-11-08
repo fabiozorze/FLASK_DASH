@@ -3,10 +3,11 @@ import { media } from "@/styles/media";
 
 export const ContainerForm = styled.div`
 
-background:  rgba(46, 0, 79, .6);
+background:  ${props=> props.theme.colors["bgGray"]};
 
-width: min(90vw, 37.6rem);
+width: 100%;
 height: min(90vh, 42rem);
+
 
 display: flex;
 flex-direction: column;
@@ -14,28 +15,28 @@ justify-content: center;
 
 gap: 3rem;
 
-box-shadow: 4px 4px 8px 1px rgba(106, 90, 205, 0.2);
-
-border-radius: 8px;
+border-radius: 0 8px 8px 0;
 
 padding: 0 3.5rem ;
 
 z-index: 2;
 
-${media.xxl}{
+/* ${media.xxl}{
     width: 40rem;
    height: 50rem;
 
    gap: 5rem;
-}
+} */
 
 >div:first-child{
     display: flex;
     flex-direction: column;
+    align-items: center;
      
     gap: .5rem;
 }
 >div:first-child>h1{
+    color: ${props=> props.theme.colors["bgGrayDark"]};
     font-size: ${props=> props.theme.fontSizes.lg};
     font-family: ${props=> props.theme.fonts["title"]};
     letter-spacing: ${props=> props.theme.letterSpacing.wide};
@@ -45,6 +46,7 @@ ${media.xxl}{
     }
 }
 >div:first-child>p{
+    color: ${props=> props.theme.colors["bgGrayDark"]};
     font-size: ${props=> props.theme.fontSizes.sm};
     
     ${media.xxl}{
@@ -60,7 +62,7 @@ form{
 
 form label{
     font-size: ${props=> props.theme.fontSizes.sm};
-    color: ${props=> props.theme.colors["white"]};
+    color: ${props=> props.theme.colors["bgGrayDark"]};
     font-weight: ${props=> props.theme.fontWeights.bold};
 
     ${media.xxl}{
@@ -73,15 +75,6 @@ input:focus{
     border-bottom: 2px solid ${props=> props.theme.colors["green"]};
 }
 
-
-form > div:nth-child(2)>input{
-    margin-bottom: .3rem;
-}
-
-
-form > div:nth-child(2){
-    margin: 3rem 0;
-}
 
 a{
     text-decoration: none;
@@ -100,42 +93,68 @@ form > a{
 export const ContainerInputs = styled.div`
     display: flex;
     flex-direction: column;
+
+    margin-bottom: 1rem;
     
-    gap: .5rem;
 
     position: relative;
-
 
     i{
     position: absolute;
 
     left: 10px;
-}
+    }
 
+    span{
+        color: ${props=> props.theme.colors["badgeRedText"]};
+    }
 `
 
 export const IconEmail = styled.i`
-    top: 50%;
+    top: 35%;
 `
 
 export const IconPassword = styled.i`
-    top: 20%;
+    top: 28%;
 `
 
-export const Input = styled.input`
+export const ContainerInputEmail = styled.div`
+	
+width: 100%;
+
+`
+export const ContainerInputPassword = styled.div`
+
+
+width: 100%;
+height: 6rem;
+
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+
+position: relative;
+
+`	
+
+export const InputEmail = styled.input`
+    background-color: transparent;
+
+    width: 100%;
 
     padding: 10px 55px;
     font-size: 1em;
 
-    background-color: transparent;
+    transition: border 0.3s ease;
+
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 2px solid #ccc;
 
-    transition: border 0.3s ease;
+    margin-bottom: .5rem;
 
-    color: ${props=> props.theme.colors["white"]};
+    color: ${props=> props.theme.colors["bgGrayDark"]};
     caret-color: ${props=> props.theme.colors["green"]};// Change input cursor color
     
     /* override Chrome’s yellow/white autofill background */
@@ -144,23 +163,23 @@ export const Input = styled.input`
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-    -webkit-text-fill-color: ${props=>props.theme.colors["white"]} !important;
+    -webkit-text-fill-color: ${props=>props.theme.colors["bgGrayDark"]} !important;
     transition: background-color 5000s ease-in-out 0s;
   }
 
-
 `
-export const ContainerInputPassword = styled.div`
+
+export const ContainerErrorEmail = styled.div`
 
 width: 100%;
-height: 6rem;
+min-height: 1.5rem;
+
 display: flex;
-flex-direction: column;
-align-items: flex-end;
+align-items: center;
 
-position: relative;
 
-`	
+`
+
 
 export const InputPassword = styled.input`
 
@@ -176,7 +195,7 @@ export const InputPassword = styled.input`
 
     transition: border 0.3s ease;
 
-    color: ${props=> props.theme.colors["white"]};
+    color: ${props=> props.theme.colors["bgGrayDark"]};
     caret-color: ${props=> props.theme.colors["green"]};// Change input cursor color
     
     /* override Chrome’s yellow/white autofill background */
@@ -193,7 +212,17 @@ export const InputPassword = styled.input`
 
 export const ContainerForgotPassword = styled.div`
 
+width: 100%;
+
 padding: 1rem 0;
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+a{
+    color: ${props=> props.theme.colors["purpleDark"]};
+}
 
 `
 
@@ -222,6 +251,8 @@ display: flex;
 flex-direction: column;
 flex:1;
 align-items: center;
+
+padding-top: 2.5rem;
 
 `
 
@@ -252,10 +283,11 @@ display: flex;
 align-items: center;
 gap: .3rem;
 
-color: ${props=> props.theme.colors["white"]};
+color: ${props=> props.theme.colors["bgGrayDark"]};
 width: ${props=> props.theme.fontWeights["bold"]};
 
 a{
-    color: ${props=> props.theme.colors["green"]};
+    color: ${props=> props.theme.colors["purpleDark"]};
+    font-weight: ${props=> props.theme.fontWeights["bold"]};
 }
 `
