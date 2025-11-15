@@ -64,5 +64,17 @@ export function VantaBackground({
         };
     }, [color, backgroundColor, showDots, points, maxDistance, spacing]);
 
+    // Handle window resize to ensure Vanta adjusts properly
+    useEffect(() => {
+        const handleResize = () => {
+            if (vantaRef.current) {
+                vantaRef.current.resize();
+            }
+        };
+        
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return <VantaLayer ref={containerRef} />;
 }

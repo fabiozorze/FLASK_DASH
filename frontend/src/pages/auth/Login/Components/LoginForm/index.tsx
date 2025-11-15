@@ -10,6 +10,7 @@ import { ButtonForm,
     CreateAccountLink, 
     IconEmail, 
     IconPassword, 
+    IconEye,
     InputEmail, 
     InputPassword } from "./styles"
 import { EnvelopeSimpleIcon, EyeIcon, EyeSlashIcon, LockIcon } from "@phosphor-icons/react"
@@ -102,7 +103,7 @@ export function LoginForm() {
             <form onSubmit={handleSubmit(handleLogin)}>
                 <ContainerInputs>
                     <label>Email ou CPF</label>
-                    <IconEmail><EnvelopeSimpleIcon size={22} color="black" /></IconEmail>
+                    <IconEmail><EnvelopeSimpleIcon color="black" /></IconEmail>
                     <ContainerInputEmail>
                         <InputEmail
                             type="email"
@@ -117,13 +118,13 @@ export function LoginForm() {
 
                 <ContainerInputs>
                     <label>Senha</label>
-                    <IconPassword><LockIcon size={22} color="black" /></IconPassword>
+                    <IconPassword><LockIcon  color="black" /></IconPassword>
                     <ContainerInputPassword>
                         <InputPassword type={isPasswordVisible ? "text" : "password"}
                             {...register("password", { required: "Senha é obrigatória" })}
                         />
                         <ButtonShowPassword onClick={handleShowPassword} type="button">
-                            {isPasswordVisible ? <EyeIcon size={30} color="black" /> : <EyeSlashIcon size={30} color="black" />}
+                            {isPasswordVisible ? <IconEye><EyeIcon color="black" /></IconEye> : <IconEye><EyeSlashIcon color="black" /></IconEye> }
                         </ButtonShowPassword>
                         <ContainerForgotPassword>
                             {errors.password && <span>{errors.password.message}</span>}

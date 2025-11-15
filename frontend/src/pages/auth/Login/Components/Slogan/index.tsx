@@ -8,7 +8,7 @@ export function Slogan() {
 
     // 1) call the hook instead of <Typewriter>
     const [text, helper] = useTypewriter({
-        words: ['O investimento realmente inteligente!'],
+        words: ['Seu investimento inteligente!'],
         loop: 2,           // run the full list twice
         typeSpeed: 70,
         deleteSpeed: 50,
@@ -31,7 +31,7 @@ export function Slogan() {
                     )
                     :
                     (
-                        <Typewriter>O investimento realmente inteligente!</Typewriter>
+                        <Typewriter>Seu investimento inteligente!</Typewriter>
                     )
             }
 

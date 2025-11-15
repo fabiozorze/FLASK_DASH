@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import { media } from "@/styles/media";
+import { responsive } from "@/styles/media";
+import type { DefaultTheme } from "styled-components";
 
 export const ContainerForm = styled.div`
 
 background:  ${props=> props.theme.colors["bgGray"]};
 
 width: 100%;
-height: min(90vh, 42rem);
+min-height: 30rem;
 
 
 display: flex;
@@ -17,16 +18,14 @@ gap: 3rem;
 
 border-radius: 0 8px 8px 0;
 
-padding: 0 3.5rem ;
+padding: 5rem 3.5rem ;
 
 z-index: 2;
 
-/* ${media.xxl}{
-    width: 40rem;
-   height: 50rem;
-
-   gap: 5rem;
-} */
+    // For screens 1440px and SMALLER (not larger!)
+    ${responsive.maxLaptopL`
+    padding: 1rem 1.2rem ;
+  `}
 
 >div:first-child{
     display: flex;
@@ -37,21 +36,27 @@ z-index: 2;
 }
 >div:first-child>h1{
     color: ${props=> props.theme.colors["bgGrayDark"]};
-    font-size: ${props=> props.theme.fontSizes.lg};
+    font-size: ${props=> props.theme.fontSizes.xl};
     font-family: ${props=> props.theme.fonts["title"]};
     letter-spacing: ${props=> props.theme.letterSpacing.wide};
 
-    ${media.xxl}{
-        font-size: ${props=> props.theme.fontSizes.xxl};
-    }
+    // For screens 1440px and SMALLER (not larger!)
+  ${responsive.maxLaptopL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["lg"]};
+  `}
+
 }
 >div:first-child>p{
     color: ${props=> props.theme.colors["bgGrayDark"]};
-    font-size: ${props=> props.theme.fontSizes.sm};
+    font-size: ${props=> props.theme.fontSizes.base};
+
+    // For screens 1440px and SMALLER (not larger!)
+  ${responsive.maxLaptopL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["sm"]};
+
+    text-align: center;
+  `}
     
-    ${media.xxl}{
-        font-size: ${props=> props.theme.fontSizes.md};
-    }
 }
 form{
     width: 100%;
@@ -61,13 +66,15 @@ form{
 }
 
 form label{
-    font-size: ${props=> props.theme.fontSizes.sm};
+    font-size: ${props=> props.theme.fontSizes.base};
     color: ${props=> props.theme.colors["bgGrayDark"]};
     font-weight: ${props=> props.theme.fontWeights.bold};
 
-    ${media.xxl}{
-        font-size: ${props=> props.theme.fontSizes.md};
-    }
+        // For screens 1440px and SMALLER (not larger!)
+  ${responsive.maxLaptopL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
+  `}
+
 }
 
 
@@ -76,17 +83,19 @@ input:focus{
 }
 
 
-a{
+/* a{
     text-decoration: none;
     font-size: ${props=> props.theme.fontSizes.sm};
 
     cursor: pointer;
-}
 
-form > a{
-    text-align: center;
-    font-size: ${props=> props.theme.fontSizes.sm};
-}
+        // For screens 1440px and SMALLER (not larger!)
+  ${responsive.maxLaptopL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
+  `}
+} */
+
+
 
 `
 
@@ -111,11 +120,44 @@ export const ContainerInputs = styled.div`
 `
 
 export const IconEmail = styled.i`
+
+    position: absolute;
+
+    left: 10px;
     top: 35%;
+
+    font-size:22px; //size of the icon
+
+    // For screens 1440px and SMALLER (not larger!)
+  ${responsive.maxLaptopL`
+    top: 30%;	
+    font-size:18px //size of the icon
+  `}
 `
 
 export const IconPassword = styled.i`
+
+    position: absolute;
+
+    left: 10px;
     top: 28%;
+
+    font-size:22px; //size of the icon
+
+    // For screens 1440px and SMALLER (not larger!)
+  ${responsive.maxLaptopL`
+    top: 23%;	
+    font-size:18px; //size of the icon
+  `}
+`
+
+export const IconEye = styled.i`
+    font-size:30px; //size of the icon
+
+    // For screens 1440px and SMALLER (not larger!)
+  ${responsive.maxLaptopL`
+    font-size:22px; //size of the icon
+  `}
 `
 
 export const ContainerInputEmail = styled.div`
@@ -135,15 +177,17 @@ align-items: flex-end;
 
 position: relative;
 
+
 `	
 
 export const InputEmail = styled.input`
+
     background-color: transparent;
 
     width: 100%;
 
     padding: 10px 55px;
-    font-size: 1em;
+    font-size: ${props=> props.theme.fontSizes.md};
 
     transition: border 0.3s ease;
 
@@ -167,6 +211,11 @@ export const InputEmail = styled.input`
     transition: background-color 5000s ease-in-out 0s;
   }
 
+    // For screens 1440px and SMALLER (not larger!)
+    ${responsive.maxLaptopL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
+  `}
+
 `
 
 export const ContainerErrorEmail = styled.div`
@@ -185,7 +234,7 @@ export const InputPassword = styled.input`
 
     width: 100%;
     padding: 10px 55px;
-    font-size: 1em;
+    font-size: ${props=> props.theme.fontSizes.md};
 
     background-color: transparent;
     border-top: none;
@@ -208,6 +257,11 @@ export const InputPassword = styled.input`
     transition: background-color 5000s ease-in-out 0s;
   }
 
+      // For screens 1440px and SMALLER (not larger!)
+      ${responsive.maxLaptopL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
+  `}
+
 `
 
 export const ContainerForgotPassword = styled.div`
@@ -222,17 +276,26 @@ justify-content: space-between;
 
 a{
     color: ${props=> props.theme.colors["purpleDark"]};
+
+    font-size: ${props=> props.theme.fontSizes.sm};
+    font-weight: ${props=> props.theme.fontWeights.bold};
+
+    // For screens 1440px and SMALLER (not larger!)
+    ${responsive.maxLaptopL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xxs"]};
+  `}
 }
 
 `
 
 export const ButtonShowPassword = styled.button`
 background-color: transparent;
+
 position: absolute;
 right: 10px;
 
 width: 50px;
-height: 40px;
+height: 50px;
 
 display: flex;
 align-items: center;
@@ -241,6 +304,11 @@ justify-content: center;
 border: none;
 
 cursor: pointer;
+
+    // For screens 1440px and SMALLER (not larger!)
+    ${responsive.maxLaptopL`
+    right: 5px;
+  `}
 
 
 `
@@ -254,6 +322,10 @@ align-items: center;
 
 padding-top: 2.5rem;
 
+    // For screens 1440px and SMALLER (not larger!)
+    ${responsive.maxLaptopL`
+    padding-top: 0;
+  `}
 `
 
 export const ButtonForm = styled.button`
@@ -275,6 +347,14 @@ margin-bottom: 1rem;
 
 cursor: pointer;
 
+    // For screens 1440px and SMALLER (not larger!)
+    ${responsive.maxLaptopL`
+    height: 3rem;
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["sm"]};
+  `}
+
+
+
 `
 
 export const CreateAccountLink = styled.p`
@@ -286,8 +366,20 @@ gap: .3rem;
 color: ${props=> props.theme.colors["bgGrayDark"]};
 width: ${props=> props.theme.fontWeights["bold"]};
 
+    // For screens 1440px and SMALLER (not larger!)
+    ${responsive.maxLaptopL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
+  `}
+
 a{
+    text-decoration: none;
     color: ${props=> props.theme.colors["purpleDark"]};
     font-weight: ${props=> props.theme.fontWeights["bold"]};
+    font-size: ${props=> props.theme.fontSizes.sm};
+
+    // For screens 1440px and SMALLER (not larger!)
+    ${responsive.maxLaptopL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
+  `}
 }
 `
