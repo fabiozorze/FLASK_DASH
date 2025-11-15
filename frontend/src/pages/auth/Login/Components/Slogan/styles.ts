@@ -28,7 +28,7 @@ h1{
     font-weight: ${props=> props.theme.fontWeights["bold"]};
 
   // For screens 1440px and SMALLER (not larger!)
-  ${responsive.maxLaptopL`
+  ${responsive.laptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xl"]};
   `}
 
@@ -51,8 +51,8 @@ export const Typewriter = styled.p`
   color: ${props=> props.theme.colors["white"]};
 
     // For screens 1440px and SMALLER (not larger!)
-    ${responsive.maxLaptopL`
-    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
+    ${responsive.laptopL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["base"]};
   `}
 
 `

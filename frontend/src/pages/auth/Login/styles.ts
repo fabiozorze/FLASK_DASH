@@ -28,9 +28,9 @@ justify-content: space-between;
 border: 1px solid ${props=> props.theme.colors["borderGray"]};	
 border-radius: 8px;
 
-  // For screens 1440px and SMALLER (not larger!)
-  ${responsive.maxLaptopL`
-    max-width: 50rem; // Smaller than 78rem
+  // For screens 1600px and SMALLER (not larger!)
+  ${responsive.laptopL`
+    max-width: 55rem; // Smaller than 78rem
   `}
 
 `

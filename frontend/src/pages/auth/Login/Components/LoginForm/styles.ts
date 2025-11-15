@@ -23,9 +23,14 @@ padding: 5rem 3.5rem ;
 z-index: 2;
 
     // For screens 1440px and SMALLER (not larger!)
-    ${responsive.maxLaptopL`
-    padding: 1rem 1.2rem ;
+    ${responsive.laptopL`
+    padding: 2rem 1.2rem ;
   `}
+
+      // For screens 1440px and SMALLER (not larger!)
+      /* ${responsive.maxLaptopL`
+    padding: 1rem 1.2rem ;
+  `} */
 
 >div:first-child{
     display: flex;
@@ -41,9 +46,11 @@ z-index: 2;
     letter-spacing: ${props=> props.theme.letterSpacing.wide};
 
     // For screens 1440px and SMALLER (not larger!)
-  ${responsive.maxLaptopL`
+  ${responsive.laptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["lg"]};
   `}
+
+
 
 }
 >div:first-child>p{
@@ -51,7 +58,7 @@ z-index: 2;
     font-size: ${props=> props.theme.fontSizes.base};
 
     // For screens 1440px and SMALLER (not larger!)
-  ${responsive.maxLaptopL`
+  ${responsive.laptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["sm"]};
 
     text-align: center;
@@ -71,8 +78,8 @@ form label{
     font-weight: ${props=> props.theme.fontWeights.bold};
 
         // For screens 1440px and SMALLER (not larger!)
-  ${responsive.maxLaptopL`
-    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
+  ${responsive.laptopL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["sm"]};
   `}
 
 }
@@ -81,21 +88,6 @@ form label{
 input:focus{
     border-bottom: 2px solid ${props=> props.theme.colors["green"]};
 }
-
-
-/* a{
-    text-decoration: none;
-    font-size: ${props=> props.theme.fontSizes.sm};
-
-    cursor: pointer;
-
-        // For screens 1440px and SMALLER (not larger!)
-  ${responsive.maxLaptopL`
-    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
-  `}
-} */
-
-
 
 `
 
@@ -129,7 +121,7 @@ export const IconEmail = styled.i`
     font-size:22px; //size of the icon
 
     // For screens 1440px and SMALLER (not larger!)
-  ${responsive.maxLaptopL`
+  ${responsive.laptopL`
     top: 30%;	
     font-size:18px //size of the icon
   `}
@@ -145,7 +137,7 @@ export const IconPassword = styled.i`
     font-size:22px; //size of the icon
 
     // For screens 1440px and SMALLER (not larger!)
-  ${responsive.maxLaptopL`
+  ${responsive.laptopL`
     top: 23%;	
     font-size:18px; //size of the icon
   `}
@@ -155,7 +147,7 @@ export const IconEye = styled.i`
     font-size:30px; //size of the icon
 
     // For screens 1440px and SMALLER (not larger!)
-  ${responsive.maxLaptopL`
+  ${responsive.laptopL`
     font-size:22px; //size of the icon
   `}
 `
@@ -212,7 +204,7 @@ export const InputEmail = styled.input`
   }
 
     // For screens 1440px and SMALLER (not larger!)
-    ${responsive.maxLaptopL`
+    ${responsive.laptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
   `}
 
@@ -258,7 +250,7 @@ export const InputPassword = styled.input`
   }
 
       // For screens 1440px and SMALLER (not larger!)
-      ${responsive.maxLaptopL`
+      ${responsive.laptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
   `}
 
@@ -281,8 +273,8 @@ a{
     font-weight: ${props=> props.theme.fontWeights.bold};
 
     // For screens 1440px and SMALLER (not larger!)
-    ${responsive.maxLaptopL`
-    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xxs"]};
+    ${responsive.laptopL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
   `}
 }
 
@@ -306,7 +298,7 @@ border: none;
 cursor: pointer;
 
     // For screens 1440px and SMALLER (not larger!)
-    ${responsive.maxLaptopL`
+    ${responsive.laptopL`
     right: 5px;
   `}
 
@@ -323,8 +315,8 @@ align-items: center;
 padding-top: 2.5rem;
 
     // For screens 1440px and SMALLER (not larger!)
-    ${responsive.maxLaptopL`
-    padding-top: 0;
+    ${responsive.laptopL`
+    padding-top: 1.5rem;
   `}
 `
 
@@ -348,7 +340,7 @@ margin-bottom: 1rem;
 cursor: pointer;
 
     // For screens 1440px and SMALLER (not larger!)
-    ${responsive.maxLaptopL`
+    ${responsive.laptopL`
     height: 3rem;
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["sm"]};
   `}
@@ -367,7 +359,7 @@ color: ${props=> props.theme.colors["bgGrayDark"]};
 width: ${props=> props.theme.fontWeights["bold"]};
 
     // For screens 1440px and SMALLER (not larger!)
-    ${responsive.maxLaptopL`
+    ${responsive.laptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
   `}
 
@@ -378,7 +370,7 @@ a{
     font-size: ${props=> props.theme.fontSizes.sm};
 
     // For screens 1440px and SMALLER (not larger!)
-    ${responsive.maxLaptopL`
+    ${responsive.laptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
   `}
 }

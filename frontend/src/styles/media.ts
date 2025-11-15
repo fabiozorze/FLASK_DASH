@@ -14,6 +14,7 @@ export const breakpoints = {
   tablet: '768px',
   laptop: '1024px',
   laptopL: '1440px',
+  laptopXL: '1600px',
   desktop: '1920px'
 } 
 
@@ -58,6 +59,13 @@ export const responsive = {
       ${css(cssRules, ...args)}
     }
   `,
+
+// CORRECT
+laptopXL: (cssRules: TemplateStringsArray, ...args: any[]) => css`
+@media (min-width: ${breakpoints.laptopXL}) {  // ✅ Fixed!
+  ${css(cssRules, ...args)}
+}
+`,
   
   desktop: (cssRules: TemplateStringsArray, ...args: any[]) => css`
     @media (min-width: ${breakpoints.desktop}) {
@@ -101,6 +109,12 @@ export const responsive = {
       ${css(cssRules, ...args)}
     }
   `,
+
+maxLaptopXL: (cssRules: TemplateStringsArray, ...args: any[]) => css`
+@media (max-width: ${breakpoints.laptopXL}) {
+  ${css(cssRules, ...args)}
+}
+`,
   
   maxDesktop: (cssRules: TemplateStringsArray, ...args: any[]) => css`
     @media (max-width: ${breakpoints.desktop}) {
