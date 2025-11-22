@@ -3,7 +3,9 @@ import { ButtonForm,
     ContainerActions, 
     ContainerErrorEmail,
     ContainerForgotPassword, 
-    ContainerForm, 
+    ContainerLogin, 
+    ContainerLogin_title,
+    ContainerLogin_form,
     ContainerInputEmail, 
     ContainerInputPassword, 
     ContainerInputs, 
@@ -94,13 +96,13 @@ export function LoginForm() {
     }
 
     return (
-        <ContainerForm>
-            <div>
+        <ContainerLogin>
+            <ContainerLogin_title>
                 <h1>Login</h1>
                 <p>Entre com seu email e senha para acessar a plataforma</p>
-            </div>
+            </ContainerLogin_title>
 
-            <form onSubmit={handleSubmit(handleLogin)}>
+            <ContainerLogin_form onSubmit={handleSubmit(handleLogin)}>
                 <ContainerInputs>
                     <label>Email ou CPF</label>
                     <IconEmail><EnvelopeSimpleIcon color="black" /></IconEmail>
@@ -144,7 +146,7 @@ export function LoginForm() {
                         }}>Criar uma conta</a>
                     </CreateAccountLink>
                 </ContainerActions>
-            </form>
+            </ContainerLogin_form>
 
 
             {/*Using radix UI to create a modal for the 2fac authentication*/}
@@ -153,7 +155,7 @@ export function LoginForm() {
                     <TwoFactorAuthModal onSuccess={() => setShowTwoFactorModal(false)} />
                 </Dialog.Trigger>
             </Dialog.Root>
-        </ContainerForm>
+        </ContainerLogin>
     )
 }
 

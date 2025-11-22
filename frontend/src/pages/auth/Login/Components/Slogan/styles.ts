@@ -20,6 +20,14 @@ padding: 0 2rem;
 border-radius: 8px 0 0 8px;
 
 
+${responsive.maxMobileL`
+    background: transparent;
+
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1.5rem 1rem;
+  `}
+
 
 h1{
     color: ${props=> props.theme.colors["white"]};
@@ -30,6 +38,10 @@ h1{
   // For screens 1440px and SMALLER (not larger!)
   ${responsive.laptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xl"]};
+  `}
+
+  ${responsive.maxMobileL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["lg"]};
   `}
 
 }
@@ -52,7 +64,11 @@ export const Typewriter = styled.p`
 
     // For screens 1440px and SMALLER (not larger!)
     ${responsive.laptopL`
-    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["base"]};
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["sm"]};
+  `}
+
+  ${responsive.maxMobileL`
+    display: none;
   `}
 
 `

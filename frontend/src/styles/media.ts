@@ -13,8 +13,8 @@ export const breakpoints = {
   mobileL: '425px',
   tablet: '768px',
   laptop: '1024px',
-  laptopL: '1440px',
-  laptopXL: '1600px',
+  laptopL: '2560px',
+  laptopXL: '2880px',
   desktop: '1920px'
 } 
 

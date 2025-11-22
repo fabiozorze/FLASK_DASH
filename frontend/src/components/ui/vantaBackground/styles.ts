@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { responsive } from "@/styles/media";
+
 
 export const VantaLayer = styled.div`
     position: absolute;
@@ -8,4 +10,12 @@ export const VantaLayer = styled.div`
     height: 100%;
     z-index: -1;
     pointer-events: none;
+
+    ${responsive.maxMobileL`
+    height: 30%;
+    top: 83px
+
+  `}
 `;
+
+

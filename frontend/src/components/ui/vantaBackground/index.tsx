@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import {VantaLayer} from "./styles";
 
 interface VantaBackgroundProps {
@@ -23,6 +23,22 @@ export function VantaBackground({
     const containerRef = useRef<HTMLDivElement>(null);
     const vantaRef = useRef<any>(null);
 
+    // State to track mobile size (default false)
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        // Check screen size once on mount (or add resize listener if you want dynamic updates)
+        const checkMobile = () => setIsMobile(window.innerWidth <= 425);
+        checkMobile();
+
+        // Optional: update on resize
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // Determine spacing based on device size
+    const currentSpacing = isMobile ? 15.4 : spacing
+
     useEffect(() => {
         function init() {
             const VANTA = (window as any).VANTA;
@@ -45,7 +61,7 @@ export function VantaBackground({
                 showDots,
                 points,
                 maxDistance,
-                spacing,
+                spacing: currentSpacing,
             });
         }
 
@@ -62,7 +78,7 @@ export function VantaBackground({
             vantaRef.current?.destroy();
             vantaRef.current = null;
         };
-    }, [color, backgroundColor, showDots, points, maxDistance, spacing]);
+    }, [color, backgroundColor, showDots, points, maxDistance, spacing, currentSpacing]);
 
     // Handle window resize to ensure Vanta adjusts properly
     useEffect(() => {
@@ -76,5 +92,10 @@ export function VantaBackground({
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    return <VantaLayer ref={containerRef} />;
+    return (
+    <>
+    <VantaLayer ref={containerRef}/>
+        
+    </>
+    )
 }

@@ -21,6 +21,7 @@ max-width: 78rem;
 height: auto;
 
 display: flex;
+flex-direction: row;
 
 align-items: stretch;
 justify-content: space-between;
@@ -29,8 +30,13 @@ border: 1px solid ${props=> props.theme.colors["borderGray"]};
 border-radius: 8px;
 
   // For screens 1600px and SMALLER (not larger!)
-  ${responsive.laptopL`
+  ${responsive.maxLaptopL`
     max-width: 55rem; // Smaller than 78rem
+  `}
+
+  ${responsive.maxMobileL`
+    background-color: rgba(34, 34, 34, 0.5); /* The dark overlay effect */
+    flex-direction: column;
   `}
 
 `
