@@ -22,12 +22,19 @@ padding: 5rem 3.5rem ;
 
 z-index: 2;
 
-    // For screens 1440px and SMALLER (not larger!)
+
     ${responsive.maxLaptopL`
     padding: 2rem 1.2rem ;
   `}
 
   ${responsive.maxMobileL`
+    background-color: transparent;
+    padding: 0;
+
+    border-radius: 0px;
+  `}
+
+${responsive.maxMobileXL`
     background-color: transparent;
     padding: 0;
 
@@ -49,12 +56,16 @@ h1{
     font-family: ${props => props.theme.fonts["title"]};
     letter-spacing: ${props => props.theme.letterSpacing.wide};
 
-    // For screens 1440px and SMALLER (not larger!)
+    
   ${responsive.maxLaptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["lg"]};
   `}
 
   ${responsive.maxMobileL`
+    color: ${({ theme }: { theme: DefaultTheme }) => theme.colors["white"]};
+  `}
+
+${responsive.maxMobileXL`
     color: ${({ theme }: { theme: DefaultTheme }) => theme.colors["white"]};
   `}
 }
@@ -63,7 +74,7 @@ p{
     color: ${props => props.theme.colors["bgGrayDark"]};
     font-size: ${props => props.theme.fontSizes.base};
 
-    // For screens 1440px and SMALLER (not larger!)
+    
   ${responsive.maxLaptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["sm"]};
 
@@ -74,10 +85,22 @@ p{
     color: ${({ theme }: { theme: DefaultTheme }) => theme.colors["white"]};
     text-align:  left;
   `}
+
+${responsive.maxMobileXL`
+    color: ${({ theme }: { theme: DefaultTheme }) => theme.colors["white"]};
+    text-align:  left;
+  `}
     
 }
 
 ${responsive.maxMobileL`
+  background-color: transparent;
+  width: 100%;
+  align-items: flex-start;
+  padding: 0 1rem;
+`}
+
+${responsive.maxMobileXL`
   background-color: transparent;
   width: 100%;
   align-items: flex-start;
@@ -119,6 +142,14 @@ background-color: ${props => props.theme.colors["bgGray"]};
 
     border-radius: 0px 0px 8px 8px;
   `}
+
+${responsive.maxMobileXL`
+    padding: 2rem 1rem;
+
+    border-radius: 0px 0px 8px 8px;
+  `}
+
+
 `
 
 export const ContainerInputs = styled.div`
@@ -150,9 +181,6 @@ export const IconEmail = styled.i`
 
     font-size:22px; //size of the icon
 
-
-
-    // For screens 1440px and SMALLER (not larger!)
   ${responsive.maxLaptopL`
     top: 30%;	
     font-size:18px //size of the icon
@@ -188,7 +216,7 @@ ${responsive.maxMobileL`
 export const IconEye = styled.i`
     font-size:30px; //size of the icon
 
-    // For screens 1440px and SMALLER (not larger!)
+    
   ${responsive.maxLaptopL`
     font-size:22px; //size of the icon
   `}
@@ -248,7 +276,7 @@ export const InputEmail = styled.input`
     transition: background-color 5000s ease-in-out 0s;
   }
 
-    // For screens 1440px and SMALLER (not larger!)
+   
     ${responsive.maxLaptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
   `}
@@ -260,16 +288,6 @@ ${responsive.maxMobileL`
 
 `;
 
-export const ContainerErrorEmail = styled.div`
-
-width: 100%;
-min-height: 1.5rem;
-
-display: flex;
-align-items: center;
-
-
-`
 
 
 export const InputPassword = styled.input`
@@ -299,7 +317,7 @@ export const InputPassword = styled.input`
     transition: background-color 5000s ease-in-out 0s;
   }
 
-      // For screens 1440px and SMALLER (not larger!)
+      
   ${responsive.maxLaptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
   `}
@@ -326,7 +344,7 @@ a{
     font-size: ${props => props.theme.fontSizes.sm};
     font-weight: ${props => props.theme.fontWeights.bold};
 
-    // For screens 1440px and SMALLER (not larger!)
+    
     ${responsive.maxLaptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
   `}
@@ -355,7 +373,7 @@ border: none;
 
 cursor: pointer;
 
-    // For screens 1440px and SMALLER (not larger!)
+    
     ${responsive.maxLaptopL`
     right: 5px;
   `}
@@ -379,7 +397,7 @@ align-items: center;
 
 padding-top: 2.5rem;
 
-    // For screens 1440px and SMALLER (not larger!)
+    
     ${responsive.maxLaptopL`
     padding-top: 1.5rem;
   `}
@@ -408,7 +426,22 @@ margin-bottom: 1rem;
 
 cursor: pointer;
 
-    // For screens 1440px and SMALLER (not larger!)
+transform: translateY(-2px);
+
+
+    &:disabled{ 
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    /* Hover state - only when NOT disabled */
+    &:not(:disabled):hover{
+        background: ${props => props.theme.colors["green"]};
+        filter: brightness(1.2);
+        
+    }
+
+    
     ${responsive.maxLaptopL`
     height: 3rem;
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["sm"]};
@@ -431,7 +464,7 @@ gap: .3rem;
 color: ${props => props.theme.colors["bgGrayDark"]};
 width: ${props => props.theme.fontWeights["bold"]};
 
-    // For screens 1440px and SMALLER (not larger!)
+    
     ${responsive.maxLaptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
   `}
@@ -446,7 +479,7 @@ a{
     font-weight: ${props => props.theme.fontWeights["bold"]};
     font-size: ${props => props.theme.fontSizes.sm};
 
-    // For screens 1440px and SMALLER (not larger!)
+    
     ${responsive.maxLaptopL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["xs"]};
   `}

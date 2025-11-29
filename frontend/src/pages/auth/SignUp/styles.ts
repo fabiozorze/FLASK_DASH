@@ -1,67 +1,96 @@
 import styled from "styled-components";
-import SignUpBG from "@/assets/img/sign_up_background.png"
 
 export const Container = styled.div`
-    background: url(${SignUpBG}) no-repeat center center/cover;
+width: 100vw;
 
-    width: 100vw;
-    height: 100vh;
-
-    display: flex;
-    justify-content: flex-start;
-
-    form{
-        background:  rgba(46, 0, 79, .2);
-
-        width: 60rem;
-        max-height: 100vh;
-
-
-        display: flex;
-        flex-direction: column;
-
-        padding:18rem 15rem 0 15rem;
-
-        border-radius: 8px;
-    }
-
-    a{
-        color: ${props=>props.theme.colors["green"]};
-        text-decoration: none;
-    }
+display: flex;
+justify-content: flex-end;
+align-items: stretch;
 
 `
 
+export const Logo = styled.h1`
+
+font-size: ${props => props.theme.fontSizes["xxl"]};
+font-weight: ${props => props.theme.fontWeights["bold"]};
+
+color: ${props => props.theme.colors["green"]};
+
+    span{
+        color: ${props => props.theme.colors["white"]};
+    }
+`
+
+
+export const ContainerTitleSignUp = styled.div`
+
+font-size: ${props => props.theme.fontSizes["base"]};
+
+margin-top: 2rem;
+margin-bottom: 3rem;
+
+
+`
+
+export const ContainerForm = styled.div`
+
+  background:  ${props => props.theme.colors["bgGrayDark"]};
+
+  display: flex;
+  flex-direction: column;
+
+  max-width: 45rem;
+  height: 100dvh;
+
+  padding: 7rem 10rem;
+
+`
+
+export const FormSignUp = styled.form`
+
+display: flex;
+flex-direction: column;
+
+border-radius: 8px;
+
+margin-bottom: 3rem;
+`
 
 export const ContainerInputs = styled.div`
 
-margin-bottom: 3rem;
+margin-bottom: 1rem;
+
+::placeholder{
+  font-size: ${props => props.theme.fontSizes["xs"]};
+}
 
 label{
-    color: ${props=>props.theme.colors["green"]};
+    color: ${props => props.theme.colors["green"]};
+    font-size: ${props => props.theme.fontSizes["sm"]};
 }
 
 input:focus{
-    border-bottom: 2px solid ${props=> props.theme.colors["green"]};
+    border-bottom: 2px solid ${props => props.theme.colors["green"]};
 }
 
     input{
     background-color: transparent;
 
     width: 100%;
-    height: 2rem;
 
     padding: 1.5rem;
     
-    margin: .8rem 0;
+    margin: .3rem 0;
 
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 2px solid #ccc;
 
-    color: ${props=> props.theme.colors["white"]};
-    caret-color: ${props=> props.theme.colors["green"]};// Change input cursor color
+    color: ${props => props.theme.colors["white"]};
+    caret-color: ${props => props.theme.colors["green"]};// Change input cursor color
+
+
     
     /* override Chrome’s yellow/white autofill background */
   &:-webkit-autofill,
@@ -69,31 +98,10 @@ input:focus{
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-    -webkit-text-fill-color: ${props=>props.theme.colors["white"]} !important;
+    -webkit-text-fill-color: ${props => props.theme.colors["white"]} !important;
     transition: background-color 5000s ease-in-out 0s;
   }
     }
-`
-
-export const ContainerTitleSignUp = styled.div`
-
-width: 100%;
-
-font-size: ${props=>props.theme.fontSizes["lg"]};
-
-margin-bottom: 5rem;
-
-
-`
-
-export const ContainerActions = styled.div`
-
-width: 100%;
-display: flex;
-justify-content: space-between;
-align-items: flex-end;
-
-
 `
 
 
@@ -105,7 +113,11 @@ display: flex;
 flex-direction: column;
 gap: 1rem;
 
-margin-bottom: 5rem;
+margin-bottom: 3rem;
+
+a{
+    color: ${props => props.theme.colors["green"]};
+}
 
 `
 
@@ -118,6 +130,10 @@ label{
    display: flex;
    align-items:center;
    gap: .5rem
+}
+
+span{
+    font-size: ${props => props.theme.fontSizes["xs"]};
 }
 
 `
@@ -153,7 +169,7 @@ export const StyledCheckbox = styled.div`
 `;
 
 export const Checkmark = styled.span`
-  color: ${prosp=>prosp.theme.colors["green"]};
+  color: ${prosp => prosp.theme.colors["green"]};
   font-size: 12px;
   display: none;
 
@@ -162,12 +178,22 @@ export const Checkmark = styled.span`
   }
 `;
 
+
+export const ContainerActions = styled.div`
+width: 100%;
+display: flex;
+flex-direction: column;
+`
+
+
 export const ButtonFormSignUp = styled.button`
 
 background: ${props => props.theme.colors["green"]};
 
-width: 8rem;
-height: 3rem;
+width: 100%;
+
+
+padding: 1rem 2.5rem;
 
 border: none;
 border-radius: 8px;
@@ -178,5 +204,45 @@ color: ${props => props.theme.colors["white"]};
 
 
 cursor: pointer;
+transform: translateY(-2px);
 
+
+    &:disabled{ 
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    /* Hover state - only when NOT disabled */
+    &:not(:disabled):hover{
+        background: ${props => props.theme.colors["green"]};
+        filter: brightness(1.2);
+        
+    }
+
+`
+
+export const ContainerReturnPage = styled.div`
+
+background: ${props => props.theme.colors["bgMidGrayDark"]};
+display: flex;
+justify-content: center;
+align-items: center;
+gap: .5rem;
+
+padding: 1rem 1.5rem;
+
+border-radius: 8px;
+
+a{
+    color: ${props => props.theme.colors["green"]};
+}
+`
+
+export const IconReturnPage = styled.i`
+display: flex;
+align-items: center;
+justify-content: center;
+
+font-size: 22px;
+color: ${props => props.theme.colors["green"]};
 `

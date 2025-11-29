@@ -11,11 +11,18 @@ export const VantaLayer = styled.div`
     z-index: -1;
     pointer-events: none;
 
-    ${responsive.maxMobileL`
-    height: 30%;
-    top: 83px
+    ${responsive.maxMobileXL`
+    height: 33%;
+    top: 113px
 
   `}
+
+    ${responsive.maxMobileL`
+    height: 30%;
+    top: 93px
+
+  `}
+
 `;
 
 

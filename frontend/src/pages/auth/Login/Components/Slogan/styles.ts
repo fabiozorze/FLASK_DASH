@@ -28,6 +28,14 @@ ${responsive.maxMobileL`
     padding: 1.5rem 1rem;
   `}
 
+${responsive.maxMobileXL`
+    background: transparent;
+
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1.5rem 1rem;
+  `}
+
 
 h1{
     color: ${props=> props.theme.colors["white"]};
@@ -41,6 +49,10 @@ h1{
   `}
 
   ${responsive.maxMobileL`
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["lg"]};
+  `}
+
+${responsive.maxMobileXL`
     font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["lg"]};
   `}
 
@@ -68,6 +80,10 @@ export const Typewriter = styled.p`
   `}
 
   ${responsive.maxMobileL`
+    display: none;
+  `}
+
+${responsive.maxMobileXL`
     display: none;
   `}
 

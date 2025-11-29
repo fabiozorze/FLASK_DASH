@@ -35,6 +35,10 @@ input{
     background: transparent;
 }
 
+a{
+    text-decoration: none;
+}
+
 
 
 `;

@@ -11,6 +11,7 @@ export const breakpoints = {
   mobileS: '320px',
   mobileM: '375px',
   mobileL: '425px',
+  mobileXL: '430px',
   tablet: '768px',
   laptop: '1024px',
   laptopL: '2560px',
@@ -38,6 +39,11 @@ export const responsive = {
   
   mobileL: (cssRules: TemplateStringsArray, ...args: any[]) => css`
     @media (min-width: ${breakpoints.mobileL}) {
+      ${css(cssRules, ...args)}
+    }
+  `,
+    mobileXL: (cssRules: TemplateStringsArray, ...args: any[]) => css`
+    @media (min-width: ${breakpoints.mobileXL}) {
       ${css(cssRules, ...args)}
     }
   `,
@@ -88,6 +94,12 @@ laptopXL: (cssRules: TemplateStringsArray, ...args: any[]) => css`
   
   maxMobileL: (cssRules: TemplateStringsArray, ...args: any[]) => css`
     @media (max-width: ${breakpoints.mobileL}) {
+      ${css(cssRules, ...args)}
+    }
+  `,
+  
+  maxMobileXL: (cssRules: TemplateStringsArray, ...args: any[]) => css`
+    @media (max-width: ${breakpoints.mobileXL}) {
       ${css(cssRules, ...args)}
     }
   `,

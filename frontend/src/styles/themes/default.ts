@@ -16,6 +16,7 @@ export const defaultTheme = {
         bgWhite: '#ffffff',
         bgGray: '#f3f4f6',
         bgGrayDark: "#222222",
+        bgMidGrayDark: "#656565",
         
         // Borders and lines
         borderGray: '#ccc',

@@ -39,4 +39,9 @@ border-radius: 8px;
     flex-direction: column;
   `}
 
+${responsive.maxMobileXL`
+    background-color: rgba(34, 34, 34, 0.5); /* The dark overlay effect */
+    flex-direction: column;
+  `}
+
 `

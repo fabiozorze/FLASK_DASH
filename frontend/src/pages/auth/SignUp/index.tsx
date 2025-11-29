@@ -1,14 +1,18 @@
 import {
     Container,
-    ContainerActions,
     ContainerInputs,
     ContainerTitleSignUp,
+    FormSignUp,
     ButtonFormSignUp,
     ContainerCheckBox,
     HiddenCheckbox,
     StyledCheckbox,
     Checkmark,
-    ContainerPolices
+    ContainerPolices,
+    ContainerForm,
+    Logo,
+    ContainerReturnPage,
+    IconReturnPage
 } from "./styles"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -18,9 +22,12 @@ import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useMutation } from "@tanstack/react-query"
 import { registerUser } from "@/services/register"
-import * as Dialog  from "@radix-ui/react-dialog"
+import * as Dialog from "@radix-ui/react-dialog"
 import { RegisterTwoFactorAuthModal } from "@/components/common/RegisterTwoFactorAuthModal"
 import { insertMaskCPF } from "./utils/cpf"
+import { VantaBackground } from "@/components/ui/vantaBackground"
+import { SignOutIcon } from "@phosphor-icons/react"
+import { SeparatorHorizontal } from "@/components/ui/SeparatorHorizontal"
 
 const createUserFormSchema = z.object({
     name: z.string().nonempty("Campo Nome é obrogatario"),
@@ -33,19 +40,19 @@ const createUserFormSchema = z.object({
 export function SignUp() {
 
     const navigate = useNavigate();
-    const [showTwoFactorModal, setShowTwoFactorModal] = useState(true);
+    const [showTwoFactorModal, setShowTwoFactorModal] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     const [isRegistered, setIsRegistered] = useState(false);
     const [cpf, setCpf] = useState("");
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { isValid} } = useForm({
         resolver: zodResolver(createUserFormSchema),
+        mode: "onChange",
     });
 
-    const { mutateAsync: registerUserFn} = useMutation({
-        mutationFn: registerUser,	
+    const { mutateAsync: registerUserFn } = useMutation({
+        mutationFn: registerUser,
     })
-
 
 
 
@@ -66,40 +73,40 @@ export function SignUp() {
 
 
 
-    async function handleSignUp(data: z.infer<typeof createUserFormSchema> ){
+    async function handleSignUp(data: z.infer<typeof createUserFormSchema>) {
         //const { name, email, password } = data;
-        if(isRegistered){
+        if (isRegistered) {
             return;
         }
 
-                try {
-                    const response = await registerUserFn(data)
-                    // const response = await api.post("/auth/register", {
-                    //     name,
-                    //     email,
-                    //     password
-                    // });
-                    
-                    // ✅ If login is successful, redirect or go to 2FA
-                    console.log("Login successful", /*response.data*/);
+        try {
+            const response = await registerUserFn(data)
+            // const response = await api.post("/auth/register", {
+            //     name,
+            //     email,
+            //     password
+            // });
 
-                    if(response.needs_2fa_setup){
-                        console.log("I am here!!!!!!");
-                        setIsRegistered(true);
-                        setShowTwoFactorModal(true);
-                    }
-                    // navigate("/TwoFactorAuth", {replace: true})
-                    //window.open("http://localhost:5001/auth/setup-2fa", "_self");
-                    // navigate('/auth/setup-2fa', { replace: true })
-        
-                } catch (error: any) {
-                    if (error.response && error.response.status === 403) {
-                        alert("Email ou senha inválidos");
-                    } else {
-                        alert("Erro ao tentar fazer login");
-                        console.error(error);
-                    }
-                }
+            // ✅ If login is successful, redirect or go to 2FA
+            console.log("Login successful", /*response.data*/);
+
+            if (response.needs_2fa_setup) {
+                console.log("I am here!!!!!!");
+                setIsRegistered(true);
+                setShowTwoFactorModal(true);
+            }
+            // navigate("/TwoFactorAuth", {replace: true})
+            //window.open("http://localhost:5001/auth/setup-2fa", "_self");
+            // navigate('/auth/setup-2fa', { replace: true })
+
+        } catch (error: any) {
+            if (error.response && error.response.status === 403) {
+                alert("Email ou senha inválidos");
+            } else {
+                alert("Erro ao tentar fazer login");
+                console.error(error);
+            }
+        }
     }
 
     async function handleReturnPage() {
@@ -114,9 +121,18 @@ export function SignUp() {
 
     return (
         <Container>
-            <form onSubmit={handleSubmit(handleSignUp)}>
+            <VantaBackground
+                color={0x00c46f}
+                backgroundColor={0x222222}
+                showDots={true}
+                points={11}
+            />
+            <ContainerForm>
+            <Logo>Invest<span>.AI</span></Logo>
+            <FormSignUp onSubmit={handleSubmit(handleSignUp)}>
                 <ContainerTitleSignUp>
-                    <h1>SIGN UP</h1>
+                    <h2>CADASTRE-SE</h2>
+                    <h2>GRATUITAMENTE</h2>
                 </ContainerTitleSignUp>
                 <ContainerInputs>
                     <label>Nome</label>
@@ -125,7 +141,7 @@ export function SignUp() {
                         placeholder="digite seu nome"
                         {...register("name", { required: "Campo Nome é obrigatório" })}
                     />
-                    {errors.name && <span>{errors.name.message}</span>}
+                    {/* {errors.name && <span>{errors.name.message}</span>} */}
                 </ContainerInputs>
 
                 <ContainerInputs>
@@ -134,9 +150,9 @@ export function SignUp() {
                         type="text"
                         placeholder="digite seu cpf"
                         {...register("cpf", { required: "Campo CPF é obrigatório" })}
-                        onChange={(e)=> register.onChange(e.target.value)}
+                        onChange={(e) => register.onChange(e.target.value)}
                     />
-                    {errors.cpf && <span>{errors.cpf.message}</span>}
+                    {/* {errors.cpf && <span>{errors.cpf.message}</span>} */}
                 </ContainerInputs>
 
                 <ContainerInputs>
@@ -146,7 +162,7 @@ export function SignUp() {
                         placeholder="digite seu email"
                         {...register("email", { required: "Campo Email é obrigatório" })}
                     />
-                    {errors.email && <span>{errors.email.message}</span>}
+                    {/* {errors.email && <span>{errors.email.message}</span>} */}
                 </ContainerInputs>
 
                 <ContainerInputs>
@@ -156,7 +172,7 @@ export function SignUp() {
                         placeholder="digite sua senha"
                         {...register("password", { required: "Campo Senha é obrigatória" })}
                     />
-                    {errors.password && <span>{errors.password.message}</span>}
+                    {/* {errors.password && <span>{errors.password.message}</span>} */}
                 </ContainerInputs>
 
                 <ContainerPolices>
@@ -181,29 +197,36 @@ export function SignUp() {
                     </ContainerCheckBox>
                 </ContainerPolices>
 
-                <ContainerActions>
+                <ButtonFormSignUp type="submit" disabled={!isValid}>CADASTRAR-SE</ButtonFormSignUp >
+
+
+                {/*Using radix UI to create a modal for the 2fac authentication*/}
+                {
+                    showTwoFactorModal && (
+                        <Dialog.Root open={showTwoFactorModal} onOpenChange={setShowTwoFactorModal}>
+                            <Dialog.Trigger asChild>
+                                <RegisterTwoFactorAuthModal onSuccess={handle2FASuccess} />
+                            </Dialog.Trigger>
+                        </Dialog.Root>
+                    )
+                }
+
+            </FormSignUp>
+
+            <SeparatorHorizontal/>
+
+            <ContainerReturnPage>
+                <IconReturnPage><SignOutIcon/></IconReturnPage>
                     <a href="#" onClick={e => {
                         e.preventDefault()   // prevent the href="#" from jumping
                         handleReturnPage()     // call your function when clicked
                     }}>
                         Eu ja tenho uma conta
                     </a>
+            </ContainerReturnPage>
 
-                    <ButtonFormSignUp type="submit">ENVIAR</ButtonFormSignUp >
-                </ContainerActions>
+            </ContainerForm>
 
-            {/*Using radix UI to create a modal for the 2fac authentication*/}
-            {
-                showTwoFactorModal && (
-                    <Dialog.Root open={showTwoFactorModal} onOpenChange={setShowTwoFactorModal}>
-                    <Dialog.Trigger asChild>
-                        <RegisterTwoFactorAuthModal onSuccess={handle2FASuccess} />
-                    </Dialog.Trigger>
-                </Dialog.Root>
-                )
-            }
-
-            </form>
         </Container>
     )
 }

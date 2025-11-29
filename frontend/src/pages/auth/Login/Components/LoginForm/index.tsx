@@ -1,7 +1,6 @@
 import { ButtonForm, 
     ButtonShowPassword, 
     ContainerActions, 
-    ContainerErrorEmail,
     ContainerForgotPassword, 
     ContainerLogin, 
     ContainerLogin_title,
@@ -44,8 +43,9 @@ export function LoginForm() {
 
     const navigate = useNavigate()
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { isValid } } = useForm({
         resolver: zodResolver(signInUserFormSchema),
+        mode: "onChange",
     });
 
     const { mutateAsync: authenticate } = useMutation({
@@ -109,13 +109,9 @@ export function LoginForm() {
                     <ContainerInputEmail>
                         <InputEmail
                             type="email"
-                            {...register("email", { required: "Email é obrigatório" })}
+                            {...register("email")}
                         />
                     </ContainerInputEmail>
-
-                    <ContainerErrorEmail>
-                        {errors.email && <span>{errors.email.message}</span>}
-                    </ContainerErrorEmail>
                 </ContainerInputs>
 
                 <ContainerInputs>
@@ -123,22 +119,20 @@ export function LoginForm() {
                     <IconPassword><LockIcon  color="black" /></IconPassword>
                     <ContainerInputPassword>
                         <InputPassword type={isPasswordVisible ? "text" : "password"}
-                            {...register("password", { required: "Senha é obrigatória" })}
+                            {...register("password")}
                         />
                         <ButtonShowPassword onClick={handleShowPassword} type="button">
                             {isPasswordVisible ? <IconEye><EyeIcon color="black" /></IconEye> : <IconEye><EyeSlashIcon color="black" /></IconEye> }
                         </ButtonShowPassword>
                         <ContainerForgotPassword>
-                            {errors.password && <span>{errors.password.message}</span>}
                             <a>esqueceu a senha?</a>
-
                         </ContainerForgotPassword>
                     </ContainerInputPassword>
                 </ContainerInputs>
 
                 <ContainerActions>
 
-                    <ButtonForm type="submit">ENTRAR</ButtonForm>
+                    <ButtonForm type="submit" disabled={!isValid}>ENTRAR</ButtonForm>
                     <CreateAccountLink>
                         Ainda não possui uma conta?<a href="#" onClick={e => {
                             e.preventDefault()   // prevent the href="#" from jumping
