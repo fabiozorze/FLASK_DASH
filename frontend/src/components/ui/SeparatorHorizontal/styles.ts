@@ -7,5 +7,6 @@ width: 100%;
 background-color: ${props=> props.theme.colors["borderGray"]};
 
 margin: 2rem 0;
+flex-shrink: 0;
 
 `

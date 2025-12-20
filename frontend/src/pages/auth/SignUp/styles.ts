@@ -1,11 +1,15 @@
-import styled from "styled-components";
+import { responsive } from "@/styles/media";
+import styled, { type DefaultTheme } from "styled-components";
 
 export const Container = styled.div`
 width: 100vw;
+height: 100vh;
 
 display: flex;
 justify-content: flex-end;
 align-items: stretch;
+
+overflow: hidden;
 
 `
 
@@ -24,10 +28,18 @@ color: ${props => props.theme.colors["green"]};
 
 export const ContainerTitleSignUp = styled.div`
 
+display: flex;
+flex-direction: column;
+
 font-size: ${props => props.theme.fontSizes["base"]};
 
 margin-top: 2rem;
 margin-bottom: 3rem;
+
+${responsive.maxLaptopL`
+    flex-direction:row;
+    font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSizes["sm"]};
+  `}
 
 
 `
@@ -40,9 +52,16 @@ export const ContainerForm = styled.div`
   flex-direction: column;
 
   max-width: 45rem;
-  height: 100dvh;
+  height: 100vh;
+
+  overflow: auto;
 
   padding: 7rem 10rem;
+
+  ${responsive.maxLaptopL`
+    width: 40rem;
+    padding: 7rem;
+  `}
 
 `
 
@@ -54,6 +73,10 @@ flex-direction: column;
 border-radius: 8px;
 
 margin-bottom: 3rem;
+
+${responsive.maxLaptopL`
+    margin-bottom: 1rem;
+  `}
 `
 
 export const ContainerInputs = styled.div`
@@ -89,8 +112,6 @@ input:focus{
 
     color: ${props => props.theme.colors["white"]};
     caret-color: ${props => props.theme.colors["green"]};// Change input cursor color
-
-
     
     /* override Chrome’s yellow/white autofill background */
   &:-webkit-autofill,
@@ -101,6 +122,11 @@ input:focus{
     -webkit-text-fill-color: ${props => props.theme.colors["white"]} !important;
     transition: background-color 5000s ease-in-out 0s;
   }
+
+  ${responsive.maxLaptopL`
+    padding: .5rem;
+  `}
+  
     }
 `
 
@@ -109,75 +135,17 @@ export const ContainerPolices = styled.div`
 
 width: 100%;
 
-display: flex;
-flex-direction: column;
-gap: 1rem;
-
 margin-bottom: 3rem;
+
+p{
+  font-size: ${props=> props.theme.fontSizes["sm"]};
+}
 
 a{
     color: ${props => props.theme.colors["green"]};
 }
 
 `
-
-
-export const ContainerCheckBox = styled.div`
-display: flex;
-gap: .8rem;
-
-label{
-   display: flex;
-   align-items:center;
-   gap: .5rem
-}
-
-span{
-    font-size: ${props => props.theme.fontSizes["xs"]};
-}
-
-`
-
-export const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
-  border: 0;
-  clip: rect(0 0 0 0);
-  clippath: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-`;
-
-export const StyledCheckbox = styled.div`
-  width: 16px;
-  height: 16px;
-  border: 2px solid #ccc;
-  border-radius: 3px;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  ${HiddenCheckbox}:checked + & {
-    background: #007bff;
-    border-color: #007bff;
-  }
-`;
-
-export const Checkmark = styled.span`
-  color: ${prosp => prosp.theme.colors["green"]};
-  font-size: 12px;
-  display: none;
-
-  ${HiddenCheckbox}:checked + ${StyledCheckbox} & {
-    display: block;
-  }
-`;
-
 
 export const ContainerActions = styled.div`
 width: 100%;
@@ -221,21 +189,54 @@ transform: translateY(-2px);
 
 `
 
-export const ContainerReturnPage = styled.div`
+export const Separator = styled.div`
+
+height: 1px;
+width: 100%;
+background-color: ${props=> props.theme.colors["borderGray"]};
+
+margin-top: 1rem;
+margin-bottom: 3rem;
+flex-shrink: 0;
+
+`
+
+export const ButtonReturnPage = styled.button`
 
 background: ${props => props.theme.colors["bgMidGrayDark"]};
 display: flex;
-justify-content: center;
-align-items: center;
-gap: .5rem;
+align-items: flex-start;
+gap: 1rem;
 
 padding: 1rem 1.5rem;
 
+border: none;
 border-radius: 8px;
 
-a{
-    color: ${props => props.theme.colors["green"]};
+cursor: pointer;
+
+opacity: 0.6;
+transform: translateY(-2px);
+
+&:hover{
+  opacity: 1;
 }
+`
+
+export const ContainerTextReturn = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: .3rem;
+
+font-size: ${props => props.theme.fontSizes.md};
+font-weight: ${props => props.theme.fontWeights.bold};
+color: ${props => props.theme.colors["white"]};
+
+span{
+  color: ${props => props.theme.colors["green"]};
+}
+
 `
 
 export const IconReturnPage = styled.i`
@@ -245,4 +246,14 @@ justify-content: center;
 
 font-size: 22px;
 color: ${props => props.theme.colors["green"]};
+`
+
+export const IconArrowRight = styled.i`
+align-self: center;
+
+margin-left: auto;
+
+font-size: 18px;
+color: ${props => props.theme.colors["bgGrayDark"]};
+
 `

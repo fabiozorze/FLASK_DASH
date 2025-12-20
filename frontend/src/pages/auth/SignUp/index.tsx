@@ -4,15 +4,15 @@ import {
     ContainerTitleSignUp,
     FormSignUp,
     ButtonFormSignUp,
-    ContainerCheckBox,
-    HiddenCheckbox,
-    StyledCheckbox,
-    Checkmark,
     ContainerPolices,
     ContainerForm,
     Logo,
-    ContainerReturnPage,
-    IconReturnPage
+    ButtonReturnPage,
+    ContainerTextReturn,
+    Separator,
+    IconReturnPage,
+    IconArrowRight
+    
 } from "./styles"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -26,8 +26,7 @@ import * as Dialog from "@radix-ui/react-dialog"
 import { RegisterTwoFactorAuthModal } from "@/components/common/RegisterTwoFactorAuthModal"
 import { insertMaskCPF } from "./utils/cpf"
 import { VantaBackground } from "@/components/ui/vantaBackground"
-import { SignOutIcon } from "@phosphor-icons/react"
-import { SeparatorHorizontal } from "@/components/ui/SeparatorHorizontal"
+import { CaretRightIcon, SignOutIcon } from "@phosphor-icons/react"
 
 const createUserFormSchema = z.object({
     name: z.string().nonempty("Campo Nome é obrogatario"),
@@ -45,7 +44,7 @@ export function SignUp() {
     const [isRegistered, setIsRegistered] = useState(false);
     const [cpf, setCpf] = useState("");
 
-    const { register, handleSubmit, formState: { isValid} } = useForm({
+    const { register, handleSubmit, formState: { isValid } } = useForm({
         resolver: zodResolver(createUserFormSchema),
         mode: "onChange",
     });
@@ -128,102 +127,86 @@ export function SignUp() {
                 points={11}
             />
             <ContainerForm>
-            <Logo>Invest<span>.AI</span></Logo>
-            <FormSignUp onSubmit={handleSubmit(handleSignUp)}>
-                <ContainerTitleSignUp>
-                    <h2>CADASTRE-SE</h2>
-                    <h2>GRATUITAMENTE</h2>
-                </ContainerTitleSignUp>
-                <ContainerInputs>
-                    <label>Nome</label>
-                    <input
-                        type="text"
-                        placeholder="digite seu nome"
-                        {...register("name", { required: "Campo Nome é obrigatório" })}
-                    />
-                    {/* {errors.name && <span>{errors.name.message}</span>} */}
-                </ContainerInputs>
+                <Logo>Invest<span>.AI</span></Logo>
+                <FormSignUp onSubmit={handleSubmit(handleSignUp)}>
+                    <ContainerTitleSignUp>
+                        <h2>CADASTRE-SE </h2>
+                        <h2>GRATUITAMENTE</h2>
+                    </ContainerTitleSignUp>
+                    <ContainerInputs>
+                        <label>Nome</label>
+                        <input
+                            type="text"
+                            placeholder="digite seu nome"
+                            {...register("name", { required: "Campo Nome é obrigatório" })}
+                        />
+                        {/* {errors.name && <span>{errors.name.message}</span>} */}
+                    </ContainerInputs>
 
-                <ContainerInputs>
-                    <label>CPF</label>
-                    <input
-                        type="text"
-                        placeholder="digite seu cpf"
-                        {...register("cpf", { required: "Campo CPF é obrigatório" })}
-                        onChange={(e) => register.onChange(e.target.value)}
-                    />
-                    {/* {errors.cpf && <span>{errors.cpf.message}</span>} */}
-                </ContainerInputs>
+                    <ContainerInputs>
+                        <label>CPF</label>
+                        <input
+                            type="text"
+                            placeholder="digite seu cpf"
+                            {...register("cpf", { required: "Campo CPF é obrigatório" })}
+                            onChange={(e) => register.onChange(e.target.value)}
+                        />
+                        {/* {errors.cpf && <span>{errors.cpf.message}</span>} */}
+                    </ContainerInputs>
 
-                <ContainerInputs>
-                    <label>Email</label>
-                    <input
-                        type="email"
-                        placeholder="digite seu email"
-                        {...register("email", { required: "Campo Email é obrigatório" })}
-                    />
-                    {/* {errors.email && <span>{errors.email.message}</span>} */}
-                </ContainerInputs>
+                    <ContainerInputs>
+                        <label>Email</label>
+                        <input
+                            type="email"
+                            placeholder="digite seu email"
+                            {...register("email", { required: "Campo Email é obrigatório" })}
+                        />
+                        {/* {errors.email && <span>{errors.email.message}</span>} */}
+                    </ContainerInputs>
 
-                <ContainerInputs>
-                    <label>Senha</label>
-                    <input
-                        type="password"
-                        placeholder="digite sua senha"
-                        {...register("password", { required: "Campo Senha é obrigatória" })}
-                    />
-                    {/* {errors.password && <span>{errors.password.message}</span>} */}
-                </ContainerInputs>
+                    <ContainerInputs>
+                        <label>Senha</label>
+                        <input
+                            type="password"
+                            placeholder="digite sua senha"
+                            {...register("password", { required: "Campo Senha é obrigatória" })}
+                        />
+                        {/* {errors.password && <span>{errors.password.message}</span>} */}
+                    </ContainerInputs>
 
-                <ContainerPolices>
-                    <ContainerCheckBox>
-                        <label>
-                            <HiddenCheckbox checked={isChecked} onChange={handleChange} />
-                            <StyledCheckbox>
-                                <Checkmark>✓</Checkmark>
-                            </StyledCheckbox>
-                            <span>Li e aceito os <a href="#">Termos de Uso</a></span>
-                        </label>
-                    </ContainerCheckBox>
+                    <ContainerPolices>
+                        <p>Ao se cadastrar, você aceita nossos <a href="">termos de uso</a> e a nossa <a href="">política de privacidade.</a></p>
+                    </ContainerPolices>
 
-                    <ContainerCheckBox>
-                        <label>
-                            <HiddenCheckbox checked={isChecked} onChange={handleChange} />
-                            <StyledCheckbox>
-                                <Checkmark>✓</Checkmark>
-                            </StyledCheckbox>
-                            <span>Li e aceito a <a href="#">Política de Privacidade</a></span>
-                        </label>
-                    </ContainerCheckBox>
-                </ContainerPolices>
+                    <ButtonFormSignUp type="submit" disabled={!isValid}>CADASTRAR-SE</ButtonFormSignUp >
 
-                <ButtonFormSignUp type="submit" disabled={!isValid}>CADASTRAR-SE</ButtonFormSignUp >
+                    {/*Using radix UI to create a modal for the 2fac authentication*/}
+                    {
+                        showTwoFactorModal && (
+                            <Dialog.Root open={showTwoFactorModal} onOpenChange={setShowTwoFactorModal}>
+                                <Dialog.Trigger asChild>
+                                    <RegisterTwoFactorAuthModal onSuccess={handle2FASuccess} />
+                                </Dialog.Trigger>
+                            </Dialog.Root>
+                        )
+                    }
 
+                </FormSignUp>
 
-                {/*Using radix UI to create a modal for the 2fac authentication*/}
-                {
-                    showTwoFactorModal && (
-                        <Dialog.Root open={showTwoFactorModal} onOpenChange={setShowTwoFactorModal}>
-                            <Dialog.Trigger asChild>
-                                <RegisterTwoFactorAuthModal onSuccess={handle2FASuccess} />
-                            </Dialog.Trigger>
-                        </Dialog.Root>
-                    )
-                }
+                <Separator/>
 
-            </FormSignUp>
-
-            <SeparatorHorizontal/>
-
-            <ContainerReturnPage>
-                <IconReturnPage><SignOutIcon/></IconReturnPage>
-                    <a href="#" onClick={e => {
+                <ButtonReturnPage onClick={e => {
                         e.preventDefault()   // prevent the href="#" from jumping
                         handleReturnPage()     // call your function when clicked
                     }}>
-                        Eu ja tenho uma conta
-                    </a>
-            </ContainerReturnPage>
+                    <IconReturnPage><SignOutIcon /></IconReturnPage>
+                        <ContainerTextReturn>
+                            Já possui uma conta?
+                            <span>Entre na plataform</span>
+                        </ContainerTextReturn>
+                    <IconArrowRight><CaretRightIcon/></IconArrowRight>
+                </ButtonReturnPage>
+
 
             </ContainerForm>
 
