@@ -24,8 +24,7 @@ import { toast } from "sonner"
 import { useMutation } from "@tanstack/react-query"
 import { login } from "@/services/login"
 import { useState } from "react"
-import { TwoFactorAuthModal } from "../../../../../components/common/TwoFactorAuthModal";
-
+import { TwoFactorAuthModal } from "@/components/common/TwoFactorAuthModal";
 
 const signInUserFormSchema = z.object({
     email: z.string()
@@ -48,8 +47,9 @@ export function LoginForm() {
         mode: "onChange",
     });
 
-    const { mutateAsync: authenticate } = useMutation({
-        mutationFn: login,
+    //React Query mutation to authenticate the user
+    const { mutateAsync: authenticate} = useMutation({
+        mutationFn: login
     })
 
     async function handleLogin(data: z.infer<typeof signInUserFormSchema>) {

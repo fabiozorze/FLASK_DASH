@@ -5,6 +5,7 @@ import { Authentication } from "./pages/auth/TwoFactorAuth"
 import { SignUp } from "./pages/auth/SignUp"
 import { DashboardLayout } from "./layouts/dashboard"
 import { Portfolio } from "./pages/portfolio"
+import { Estrategias } from "./pages/Estrtegias"
 // import { DashboardLayout } from "./pages/_layout/dashboard"
 
 // Flat route table that matches your current working paths
@@ -25,7 +26,8 @@ export const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       { index: true, element: <Dashboard /> },
-      { path: "portfolio", element: <Portfolio /> }
+      { path: "portfolio", element: <Portfolio /> },
+      { path: "estrategias", element: <Estrategias /> },
     ],
   },
 ])

@@ -18,9 +18,12 @@ text-rendering: optimizeLegibility;
 
 
 body{
-    background: ${props => props.theme.colors["bgGrayDark"]};
     color: ${props => props.theme.colors["white"]} ;
     -webkit-font-smoothing: antialiased;
+}
+
+button{
+    all: unset;
 }
 
 body, input, textarea, button{

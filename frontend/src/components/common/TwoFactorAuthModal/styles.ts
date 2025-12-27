@@ -31,7 +31,7 @@ z-index: 1001;
 
 /* Set a fixed width instead of min-width to control the modal size */
 /* Set a fixed width instead of min-width to control the modal size */
-width: min(90vw, 42rem);
+width: min(90vw, 38rem);
 max-width: 42rem;
 
 padding: 2.5rem 2rem;
@@ -56,14 +56,14 @@ form div{
     gap: 1.5rem;
     flex-wrap: wrap; /* Allow wrapping on very small screens */
 
-    padding: 5rem 0;
+    padding: 2rem 0;
 
 }
 
 form div input{
     background-color: ${props=>props.theme.colors["bgGray"]};
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
 
     border-radius: 8px;
 

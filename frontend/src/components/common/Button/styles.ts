@@ -43,7 +43,7 @@ const sizeVariants = {
     },
     full: {
         width: '100%',
-        height: '4.8rem',
+        height: '3.8rem',
         padding: '0 1rem',
         fontSize: '1.5rem',
     },
