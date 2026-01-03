@@ -421,6 +421,7 @@ border-radius: 8px;
 font-size: ${props => props.theme.fontSizes.md};
 font-weight: ${props => props.theme.fontWeights.bold};
 color: ${props => props.theme.colors["white"]};
+text-align: center;
 
 margin-bottom: 1rem;
 

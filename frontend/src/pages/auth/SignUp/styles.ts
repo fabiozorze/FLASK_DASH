@@ -158,8 +158,6 @@ export const ButtonFormSignUp = styled.button`
 
 background: ${props => props.theme.colors["green"]};
 
-width: 100%;
-
 
 padding: 1rem 2.5rem;
 
@@ -169,6 +167,8 @@ border-radius: 8px;
 font-size: ${props => props.theme.fontSizes.md};
 font-weight: ${props => props.theme.fontWeights.bold};
 color: ${props => props.theme.colors["white"]};
+
+text-align: center;
 
 
 cursor: pointer;

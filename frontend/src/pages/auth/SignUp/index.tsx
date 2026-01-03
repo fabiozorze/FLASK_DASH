@@ -206,8 +206,6 @@ export function SignUp() {
                         </ContainerTextReturn>
                     <IconArrowRight><CaretRightIcon/></IconArrowRight>
                 </ButtonReturnPage>
-
-
             </ContainerForm>
 
         </Container>

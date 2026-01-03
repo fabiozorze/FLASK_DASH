@@ -1,32 +1,28 @@
-import * as Menubar from "@radix-ui/react-menubar"
-import { MenubarRoot, MenubarTrigger } from "./styles"
-import { QuestionIcon } from "@phosphor-icons/react"
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { DropdownContent} from "./styles"
+import type { ReactNode } from "react";
 
 
-export function DropDownMenu() {
+interface DropDownProps{
+    trigger: ReactNode;
+    children: ReactNode;
+    align?: "start" | "center" | "end"
+}
+
+export function DropDownMenu({trigger, children, align="end"}:DropDownProps) {
     return (
-        <MenubarRoot className="MenubarRoot">
-            <Menubar.Menu>
-                <MenubarTrigger className="MenubarTrigger"><QuestionIcon size={18}/> Support</MenubarTrigger>
-                <Menubar.Portal>
-                    <Menubar.Content
+        <DropdownMenu.Root>
+                <DropdownMenu.Trigger asChild>{trigger}</DropdownMenu.Trigger>
+                <DropdownMenu.Portal>
+                    <DropdownContent
                         className="MenubarContent"
-                        align="start"
+                        align={align}
                         sideOffset={5}
-                        alignOffset={-3}
                     >
-                        <Menubar.Item className="MenubarItem">
-                            New Tab
-                        </Menubar.Item>
-                        <Menubar.Item className="MenubarItem">
-                            New Window
-                        </Menubar.Item>
-                        <Menubar.Item className="MenubarItem">
-                            Print…
-                        </Menubar.Item>
-                    </Menubar.Content>
-                </Menubar.Portal>
-            </Menubar.Menu>
-        </MenubarRoot>
+                        {children}
+                        
+                    </DropdownContent>
+                </DropdownMenu.Portal>
+        </DropdownMenu.Root>
     )
 }

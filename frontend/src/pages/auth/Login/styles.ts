@@ -3,6 +3,7 @@ import { responsive } from "@/styles/media";
 
 
 export const Container = styled.div`
+background-color: ${props=>props.theme.colors["bgGrayDark"]};
 width: 100vw;
 height: 100vh;
 
@@ -11,6 +12,8 @@ position: relative;
 display: flex;
 align-items: center;
 justify-content: center;
+
+z-index: 0;
 
 `;
 
