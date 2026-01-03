@@ -1,6 +1,6 @@
 
 import { ContainerDashboard } from "../Dashboard/styles";
-import { CardOne } from "./components/CardOne";
+import { CardOne } from "@/components/common/CardOne";
 
 
 export function Dashboard(){

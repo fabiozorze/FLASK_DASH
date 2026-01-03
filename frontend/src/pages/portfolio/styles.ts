@@ -127,6 +127,21 @@ color: ${props => props.theme.colors["textDark"]};
 
 
 export const SectionExplorePortfolios = styled.div`
+max-width: 1400px;
 
+
+margin: 0 auto;
+
+
+`
+
+export const ContainerCards = styled.div`
+width: 100%;
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+
+padding-left: 5rem;
+padding-right: 5rem;
 
 `

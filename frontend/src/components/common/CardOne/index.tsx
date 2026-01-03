@@ -1,6 +1,6 @@
 import { getProfile } from "@/services/get-profile";
-import { AllocationBar } from "../../../../components/charts/AllocationBar";
-import { StrategyPerformance } from "../../../../components/charts/StrategyPerformance";
+import { AllocationBar } from "../../charts/AllocationBar";
+import { StrategyPerformance } from "../../charts/StrategyPerformance";
 import { ButtonCreateStrategy, ButtonDtail, CardContainer, ContainerCardTitle, ContainerDetails } from "./styles";
 import { useQuery } from "@tanstack/react-query";
 export function CardOne() {

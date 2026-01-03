@@ -1,17 +1,20 @@
-import { 
-    Page, 
-    SectionHowToCreatePortfolio, 
-    Title, 
-    Text, 
-    ContainerCreationPortfolioMap, 
-    SectionExplorePortfolios, 
-    ListContainer, 
-    List, 
+import { CardOne } from "@/components/common/CardOne";
+import {
+    Page,
+    SectionHowToCreatePortfolio,
+    Title,
+    Text,
+    ContainerCreationPortfolioMap,
+    SectionExplorePortfolios,
+    ListContainer,
+    List,
     ContainerListNumber,
-    NumberText, ListContent, 
-    ListContentTitle, 
-    ListContentText, 
-    Header} from "./styles";
+    NumberText, ListContent,
+    ListContentTitle,
+    ListContentText,
+    Header,
+    ContainerCards
+} from "./styles";
 
 
 export function Portfolio() {
@@ -19,57 +22,57 @@ export function Portfolio() {
         <Page>
             <SectionHowToCreatePortfolio>
                 <Header>
-                <Title>Portfolios de Investimentos</Title>
-                <Text>
-                    Explore expertly crafted portfolios tailored to diverse investment strategies
-                    and market themes.
-                </Text>
+                    <Title>Portfolios de Investimentos</Title>
+                    <Text>
+                        Explore expertly crafted portfolios tailored to diverse investment strategies
+                        and market themes.
+                    </Text>
                 </Header>
 
                 <ContainerCreationPortfolioMap>
                     <ListContainer>
                         <List>
                             <ContainerListNumber>
-                            <NumberText>1</NumberText>
+                                <NumberText>1</NumberText>
                             </ContainerListNumber>
-                            
+
                             <ListContent>
                                 <ListContentTitle>Choose Portfolio</ListContentTitle>
-                                <ListContentText> 
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Porro optio, veritatis temporibus illo repudiandae quas nesciunt pariatur consectetur! 
+                                <ListContentText>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Porro optio, veritatis temporibus illo repudiandae quas nesciunt pariatur consectetur!
                                     Odio, alias repellendus maiores ducimus id.
-                                    </ListContentText>
+                                </ListContentText>
                             </ListContent>
                         </List>
 
                         <List>
                             <ContainerListNumber>
-                            <NumberText>2</NumberText>
+                                <NumberText>2</NumberText>
                             </ContainerListNumber>
-                            
+
                             <ListContent>
                                 <ListContentTitle>Choose Portfolio</ListContentTitle>
                                 <ListContentText>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Porro optio, veritatis temporibus illo repudiandae quas nesciunt pariatur consectetur! 
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Porro optio, veritatis temporibus illo repudiandae quas nesciunt pariatur consectetur!
                                     Odio, alias repellendus maiores ducimus id.
-                                    </ListContentText>
+                                </ListContentText>
                             </ListContent>
                         </List>
 
                         <List>
                             <ContainerListNumber>
-                            <NumberText>3</NumberText>
+                                <NumberText>3</NumberText>
                             </ContainerListNumber>
-                            
+
                             <ListContent>
                                 <ListContentTitle>Choose Portfolio</ListContentTitle>
                                 <ListContentText>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Porro optio, veritatis temporibus illo repudiandae quas nesciunt pariatur consectetur! 
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Porro optio, veritatis temporibus illo repudiandae quas nesciunt pariatur consectetur!
                                     Odio, alias repellendus maiores ducimus id.
-                                    </ListContentText>
+                                </ListContentText>
                             </ListContent>
                         </List>
 
@@ -78,8 +81,18 @@ export function Portfolio() {
             </SectionHowToCreatePortfolio>
 
             <SectionExplorePortfolios>
+                <Header>
+                    <Title>Explore Portfolios</Title>
+                </Header>
+                <ContainerCards>
+                    <CardOne />
+                    <CardOne />
+                    <CardOne />
+                    <CardOne />
+                </ContainerCards>
 
             </SectionExplorePortfolios>
+
         </Page>
     )
 }
