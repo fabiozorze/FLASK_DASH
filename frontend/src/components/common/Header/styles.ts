@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderNavigation = styled.div`
+export const HeaderNavigation = styled.header`
 width: 100%;
 height: 4.25rem;
 
@@ -8,6 +8,7 @@ padding-left: 2rem;
 padding-right: 2rem;
 
 display: flex;
+flex-shrink: 0; //If the content inside the Outlet is very tall, the browser might try to "shrink" the header to make everything fit, unless you tell it not to
 justify-content: space-between;
 align-items: center;
 

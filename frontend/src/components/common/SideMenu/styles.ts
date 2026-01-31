@@ -2,11 +2,9 @@ import { NavLink as RRNavLink } from "react-router-dom"
 import { styled } from "styled-components"
 
 
-export const Container = styled.header`
-background-color: green;
+export const Container = styled.div`
 width: 16.6rem;
 max-width: 16.6rem;
-height: 100vh;
 
 
 display: flex;

@@ -6,7 +6,7 @@ background-color: ${props => props.theme.colors["bgWhite"]};
 box-shadow: 3px 2px 5px 0px rgba(221,218,218,0.75);
 
 width: 20rem;
-height: 30rem;
+height: 31rem;
 
 display: flex;
 flex-direction: column;
